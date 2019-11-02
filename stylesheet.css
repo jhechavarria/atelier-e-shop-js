@@ -1,0 +1,101 @@
+html, body {
+    height: 100%;
+}
+
+/* #wrapper {
+    width: 100%;
+    height: 3000px;
+} */
+
+#container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "products basket";
+    grid-column-gap: 5px;
+    width: 100%;
+    /* height: 100%; */
+    border: 1px solid yellow;
+}
+
+#products {
+    grid-area: products;
+    display: grid;
+    grid-template-columns: repeat( 4, minmax(100px, 1fr) );
+    grid-template-rows: 50px auto;
+    grid-template-areas:
+        "title title title title";
+    grid-gap: 5px 5px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 1px solid green;
+}
+
+/* @media screen and (max-width: 500px) {
+    #products {
+        grid-template-columns: repeat( 2, minmax(150px, 1fr) );
+    }
+  } */
+
+#basket {
+    grid-area: basket;
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 50px auto;
+    grid-template-areas:
+        "search"
+        "title"
+        "products";
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: 1px solid red;
+}
+
+#search-bar {
+    grid-area: search;
+    border: 1px solid cyan;
+}
+
+#title {
+    grid-area: title;
+    border: 1px solid magenta;
+}
+
+.item {
+    display: grid;
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    border: 1px solid blue;
+    place-self: center;
+}
+
+.test {
+    
+}
+
+.loader {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #3498db;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    place-self: center;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

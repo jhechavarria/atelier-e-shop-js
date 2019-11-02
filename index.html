@@ -1,0 +1,50 @@
+<!-- GROUPE: MAXIMILIEN DANDRES, MATHIS DIETRICH, JESSIE HECHAVARRIA -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AtelierJS</title>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div id="container">
+
+        <div id="products">
+            <div id="title">
+                <p>Products</p>
+            </div>
+            <!-- <div class="loader"></div> -->
+            <!-- <div class="item">
+                <p>Item Test</p>
+                <p>Content</p>
+                <p>Content</p>
+                <p>Content</p>
+            </div> -->
+        </div>
+
+        <div id="basket">
+            <div id="search-bar">
+                <p>Search bar</p>
+            </div>
+            <div id="title">
+                <p>Basket</p>
+            </div>
+        </div>
+    </div>
+    <!-- Script de test pour créer plusieurs items -->
+    <script type="text/javascript">
+        $(document).ready(() => {
+            console.log("Page ready");
+
+            for (let i = 0; i < 100; i++) {
+                $("#products").append("<div class='item'><div class='loader'></div></div>");
+            }
+        });
+    </script>
+</body>
+
+</html>
