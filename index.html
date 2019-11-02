@@ -1,6 +1,6 @@
 <!-- GROUPE: MAXIMILIEN DANDRES, MATHIS DIETRICH, JESSIE HECHAVARRIA -->
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -29,22 +29,22 @@
         <div id="basket">
             <div id="search-bar">
                 <p>Search bar</p>
+                <p><input type="search" placeholder="Chercher un produit"></p>
             </div>
             <div id="title">
                 <p>Basket</p>
+                <p class="total-checkout"></p>
             </div>
         </div>
     </div>
-    <!-- Script de test pour créer plusieurs items -->
-    <script type="text/javascript">
-        $(document).ready(() => {
-            console.log("Page ready");
-
-            for (let i = 0; i < 100; i++) {
-                $("#products").append("<div class='item'><div class='loader'></div></div>");
-            }
-        });
-    </script>
+    <!-- Base Classes -->
+    <script src="js/Product.js"></script>
+    <script src="js/Cart.js"></script>
+    <script src="js/Catalog.js"></script>
+    <!-- Main Script -->
+    <script src="js/handleCart.js"></script>
+    <script src="js/handleCatalog.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>
