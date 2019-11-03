@@ -99,6 +99,7 @@ Diminue la quantite d'un produit.
 Calcule le prix total du panier.
 
 **@param** *void*
+
 **@return** *int* - Prix total du panier.
 
 #### count
@@ -114,6 +115,7 @@ Compte le nombre de produits differents presents dans le panier.
 Supprime tous les produits de la memoire et du panier.
 
 **@param** *void*
+
 **@return** *void*
 
 #### on
@@ -121,7 +123,9 @@ Supprime tous les produits de la memoire et du panier.
 Associe un callback a des evenements a ecouter.
 
 **@param** *string* - Evenements a ecouter.
+
 **@param** *funciton* - Le callback a appeler
+
 **@return** *void*
 
 ```js
