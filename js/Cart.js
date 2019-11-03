@@ -38,7 +38,7 @@ var Cart = new (function() {
      * Sauvegarde le panier dans le localStorage
      * 
      * @param void
-     * @return void
+     * @return bool Retourne vrai si la sauvegarde est effectuee
      */
     this.save = function() {
         var cart = JSON.stringify(_products);
@@ -223,20 +223,6 @@ var Cart = new (function() {
             total += product.price * product.qty;
         }
         return Number.parseFloat(total).toFixed(2);
-    }
-
-    /**
-     * Compter le nombre de differents produits dans le panier
-     * 
-     * @param void
-     * @return int Le nombre de produits differents dans le panier
-     */
-    this.count = function() {
-        let count = 0;
-        for (let prop in _products) {
-            count++;
-        }
-        return count;
     }
 
     /**

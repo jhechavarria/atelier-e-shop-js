@@ -38,12 +38,12 @@ var Catalog = new (function() {
         return this.products[index] !== undefined && this.products[index] instanceof Product;
     }
 
-    this.getProduct = function(id) {
-        if (!this.productIsIndexed(id)) {
+    this.getProduct = function(index) {
+        if (!this.hasProduct()) {
             return null;
         }
 
-        return this.products[id];
+        return this.products[index];
     }
 
     this.onLoad = function(callback) { _callback.onLoad.push(callback); }

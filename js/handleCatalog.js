@@ -1,23 +1,31 @@
 jQuery(function() {
     let PRODUCT_TEMPLATE =
-    '<div class="item product">'+
-        //'<p class="image"><img src="" alt="" /></p>'+
-        //'<p class="name"></p>'+
-        //'<p class="description"></p>'+
-        '<p class="price"></p>'+
-        '<div class="qty">'+
-            '<button class="decr">-</button>'+
-            '<input type="text" placeholder="Quantite">'+
-            '<button class="incr">+</button>'+
+    '<div class="card col-md-6 col-lg-4 mb-5 product">'+
+        '<img class="card-img-top" src="" alt="">'+
+        '<div class="card-body">'+
+            '<h5 class="card-title"></h5>'+
+            '<p class="card-text"></p>'+
+            '<p class="card-text price"></p>'+
         '</div>'+
-        '<button class="addProduct">ADD TO CART</button>'+
+        '<div class="card-footer row">'+
+            '<div class="input-group col-md-12 col-lg-6">'+
+                '<div class="input-group-prepend">'+
+                    '<button class="btn btn-outline-secondary decr" type="button">-</button>'+
+                '</div>'+
+                '<input type="test" min="0" max="9" class="form-control text-center" placeholder="Quantite">'+
+                '<div class="input-group-append">'+
+                    '<button class="btn btn-outline-secondary incr" type="button">+</button>'+
+                '</div>'+
+            '</div>'+
+            '<button class="btn btn-primary col-md-12 col-lg-6 text-uppercase addProduct">Add to cart</button>'+
+        '</div>'+
     '</div>';
 
     /**
     * Gerer la quantite via les boutons
     */
-   $('#products, #basket').on('click', '.product .decr, .product .incr', function(e) {
-       let $input = $('input', $(this).closest('.product'));
+   $('.list').on('click', '.product .decr, .product .incr', function(e) {
+       let $input = $('input', $(this).closest('.input-group'));
        let qty = parseInt($input.val());
 
        qty += $(this).hasClass('incr') ? 1 : -1;
@@ -36,7 +44,7 @@ jQuery(function() {
    /**
      * Gerer la quantite via l'input
      */
-    $('#products, #basket').on('keypress change blur', '.qty input', function(e) {
+    $('.list').on('keypress change blur', 'input', function(e) {
         let $input = $(this);
         let qty = $input.val();
 
@@ -54,7 +62,7 @@ jQuery(function() {
     /**
      * Gerer l'ajout de produits au panier
      */
-    $('#products').on('click', '.product .addProduct', function() {
+    $('.catalog .list').on('click', '.product .addProduct', function() {
         let $product = $(this).closest('.product');
         let index = $product.attr('product');
         let qty = parseInt($('input', $product).val());
@@ -69,17 +77,17 @@ jQuery(function() {
     /**
      * Gerer le filtre de recherche par nom
      */
-    $('#basket #search-bar input').keypress(function() {
+    $('.cart .filters input').on('keypress change blur', function() {
         let search = $(this).val().trim().toLowerCase();
 
         if (search === "") {
-            $('.product', '#products').show();
+            $('.product', '.catalog .list').show();
             return ;
         }
 
-        $('.product', '#products').each(function(index, el) {
+        $('.product', '.catalog .list').each(function(index, el) {
             let $product = $(el);
-            let name = $('.name', $product).text().toLowerCase();
+            let name = $('.card-title', $product).text().toLowerCase();
 
             if (name.indexOf(search) !== -1) {
                 $product.show(0);
@@ -98,13 +106,13 @@ jQuery(function() {
             let $product = $(PRODUCT_TEMPLATE);
 
             $product.attr('product', product.id);
-            $('.name', $product).text(product.name);
-            $('.description', $product).text(product.description);
-            $('.price', $product).html(product.price + ' &euro;');
-            $('.image img', $product).attr('src', product.image).attr('alt', product.name);
-            $('.qty input', $product).val(product.qty);
+            $('.card-title', $product).text(product.name);
+            $('.card-text', $product).text(product.description);
+            $('.card-text.price', $product).html(product.price + ' &euro;');
+            $('.card-img-top', $product).attr('src', product.image).attr('alt', product.name);
+            $('.card-footer input', $product).val(product.qty);
 
-            $product.appendTo('#products');
+            $product.appendTo('.catalog .list');
         }
     });
 });

@@ -1,15 +1,23 @@
 jQuery(function() {
     let PRODUCT_TEMPLATE = 
-    '<div class="item product">'+
-        //'<p class="image"><img src="" alt="" /></p>'+
-        //'<p class="name"></p>'+
-        '<p class="price"></p>'+
-        '<div class="qty">'+
-            '<button class="decr">-</button>'+
-            '<input type="text" placeholder="Quantite">'+
-            '<button class="incr">+</button>'+
+    '<div class="card mb-5 product">'+
+        '<img class="card-img-top" src="" alt="">'+
+        '<div class="card-body">'+
+            '<h5 class="card-title"></h5>'+
         '</div>'+
-        '<button class="remove">REMOVE</button>'+
+        '<div class="card-footer row">'+
+            '<div class="input-group col-md-12 col-lg-6">'+
+                '<div class="input-group-prepend">'+
+                    '<button class="btn btn-outline-secondary decr" type="button">-</button>'+
+                '</div>'+
+                '<input type="test" min="0" max="9" class="form-control text-center" placeholder="Quantite">'+
+                '<div class="input-group-append">'+
+                    '<button class="btn btn-outline-secondary incr" type="button">+</button>'+
+                '</div>'+
+            '</div>'+
+            '<p class="col-md-10 col-lg-5 text-uppercase price"></p>'+
+            '<button class="col-md-2 col-lg-1 btn btn-danger remove"><i class="fa fa-trash"></i></button>'+
+        '</div>'+
     '</div>';
 
     /**
@@ -19,12 +27,12 @@ jQuery(function() {
         let $product = $(PRODUCT_TEMPLATE);
 
         $product.attr('product', product.id);
-        $('.name', $product).text(product.name);
-        $('.description', $product).text(product.description);
-        $('.image img', $product).attr('src', product.image).attr('alt', product.name);
-        $('.qty input', $product).val(product.qty);
+        $('.card-title', $product).text(product.name);
+        $('.card-text', $product).text(product.description);
+        $('.card-img-top', $product).attr('src', product.image).attr('alt', product.name);
+        $('.card-footer input', $product).val(product.qty);
 
-        $product.appendTo('#basket');
+        $product.appendTo('.cart .list');
     });
 
     /**
@@ -40,19 +48,19 @@ jQuery(function() {
             }
 
             $product.attr('product', product.id);
-            $('.name', $product).text(product.name);
-            $('.image img', $product).attr('src', product.image).attr('alt', product.name);
-            $('.qty input', $product).val(product.qty);
+            $('.card-title', $product).text(product.name);
+            $('.card-img-top', $product).attr('src', product.image).attr('alt', product.name);
+            $('.card-footer input', $product).val(product.qty);
             $('.price', $product).html(product.price + ' &euro;');
     
-            $product.appendTo('#basket');
+            $product.appendTo('.cart .list');
         }
     });
 
     /**
      * Gerer le changement de quantite
      */
-    $('#basket').on('qtyChange', '.product', function(e, qty) {
+    $('.cart .list').on('qtyChange', '.product', function(e, qty) {
         let $product = $(this);
         let idx = $product.attr('product');
 
@@ -68,7 +76,7 @@ jQuery(function() {
      * Actions liees a la modificaiton des quantites
      */
     Cart.on('qtyChange', function(product) {
-        $('.product[product="'+product.id+'"] input', '#basket').val(product.qty);
+        $('.product[product="'+product.id+'"] input', '.cart .list').val(product.qty);
     });
 
     /**
@@ -81,7 +89,7 @@ jQuery(function() {
     /**
      * Gerer la suppression d'un produit
      */
-    $('#basket').on('click', '.remove', function() {
+    $('.cart .list').on('click', '.remove', function() {
         let $product = $(this).closest('.product');
         let id = $product.attr('product');
 
@@ -92,7 +100,7 @@ jQuery(function() {
      * Actions liees a la suppresion des produits du panier
      */
     Cart.on('productRemove', function(product) {
-        $('.product[product="'+product.id+'"]', '#basket').remove();
+        $('.product[product="'+product.id+'"]', '.cart .list').remove();
     });
 
     /**
