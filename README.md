@@ -2,7 +2,7 @@
 
 e-shop.js est un projet de groupe realise au cours de divers ateliers de developpement.
 
-## Kezako
+### Kezako
 
 Le projet consiste a creer une partie d'une application de vente en ligne: listing du catalogue de produits et gestion du panier.
 
