@@ -38,7 +38,7 @@ var Cart = new (function() {
      * Sauvegarde le panier dans le localStorage
      * 
      * @param void
-     * @return bool Retourne vrai si la sauvegarde est effectuee
+     * @return void
      */
     this.save = function() {
         var cart = JSON.stringify(_products);
