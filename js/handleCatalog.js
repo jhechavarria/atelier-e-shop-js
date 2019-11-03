@@ -2,13 +2,17 @@ jQuery(function() {
     let PRODUCT_TEMPLATE =
     '<div class="card col-md-6 col-lg-4 mb-5 product">'+
         '<img class="card-img-top" src="" alt="">'+
-        '<div class="card-body">'+
+        '<div class="card-body justify-content-around">'+
             '<h5 class="card-title"></h5>'+
-            '<p class="card-text"></p>'+
-            '<p class="card-text price"></p>'+
-        '</div>'+
+            '<p class="card-text item-description" style=""></p>'+
+            '</div>'+
+        '<div class="row justify-content-center">' +
+            '<div class="col-md-12 col-lg-4">' +    
+                '<p class="card-text price"></p>'+
+            '</div>' +
+        '</div>' +
         '<div class="card-footer row">'+
-            '<div class="input-group col-md-12 col-lg-6">'+
+            '<div class="input-group col-md-12">'+
                 '<div class="input-group-prepend">'+
                     '<button class="btn btn-outline-secondary decr" type="button">-</button>'+
                 '</div>'+
@@ -17,6 +21,8 @@ jQuery(function() {
                     '<button class="btn btn-outline-secondary incr" type="button">+</button>'+
                 '</div>'+
             '</div>'+
+        '</div>'+
+        '<div class="row justify-content-center">'+
             '<button class="btn btn-primary col-md-12 col-lg-6 text-uppercase addProduct">Add to cart</button>'+
         '</div>'+
     '</div>';

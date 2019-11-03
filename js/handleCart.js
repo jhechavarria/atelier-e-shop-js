@@ -1,22 +1,29 @@
 jQuery(function() {
     let PRODUCT_TEMPLATE = 
     '<div class="card mb-5 product">'+
-        '<img class="card-img-top" src="" alt="">'+
-        '<div class="card-body">'+
-            '<h5 class="card-title"></h5>'+
-        '</div>'+
-        '<div class="card-footer row">'+
-            '<div class="input-group col-md-12 col-lg-6">'+
+        '<div class="row">'+
+            '<div class="col-md-4 col-lg-4">'+
+                '<img class="card-img-top" src="" alt="">'+
+            '</div>' +
+            '<div class="col-md-8 col-lg-8">'+
+                '<p class="card-title"></p>'+
+            '</div>' +
+        '</div>' +
+        '<div class="row justify-content-center">'+
+            '<p class="col-md-6 col-lg-4 text-uppercase price"></p>'+    
+        '</div>' +
+        // '<hr>' +
+        '<div class="row">'+
+            '<div class="input-group col-md-8 col-lg-8">'+
                 '<div class="input-group-prepend">'+
                     '<button class="btn btn-outline-secondary decr" type="button">-</button>'+
                 '</div>'+
-                '<input type="test" min="0" max="9" class="form-control text-center" placeholder="Quantite">'+
+                '<input type="text" min="0" max="9" class="form-control text-center item-qty" placeholder="Quantite">'+
                 '<div class="input-group-append">'+
                     '<button class="btn btn-outline-secondary incr" type="button">+</button>'+
                 '</div>'+
             '</div>'+
-            '<p class="col-md-10 col-lg-5 text-uppercase price"></p>'+
-            '<button class="col-md-2 col-lg-1 btn btn-danger remove"><i class="fa fa-trash"></i></button>'+
+            '<button class="col-md-2 col-lg-2 btn btn-danger remove"><i class="fa fa-trash"></i></button>'+
         '</div>'+
     '</div>';
 

@@ -12,7 +12,7 @@ var Catalog = new (function() {
         /**
          * Remplacer par un vrai chargement de catalogue :D
          */
-        $.getJSON('http://localhost/Data/Catalog1.json')
+        $.getJSON('./Data/Catalog1.json')
         .done(function(products) {
             for (var idx in products) {
                 var product = new Product(products[idx]);
