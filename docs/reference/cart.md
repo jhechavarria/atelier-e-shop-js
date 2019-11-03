@@ -22,15 +22,53 @@ Sauvegarde les produits du panier en memoire
 
 #### hasProduct
 
+Verifie si un produit se trouve deja dans le panier
+
+**@param** *Product* - Le produit a chercher.
+
+**@return** *boolean* - Retourne vrai si le produit existe.
+
 #### productIsIndexed
+
+Cherche si un produit existe par son ID.
+
+**@param** *int* - L'identifiant a verifier.
+
+**@return** *boolean* - Retourne vrai si le produit existe.
 
 #### getProduct
 
+Recuperer un produit du panier.
+
+**@param** *int* - L'identifiant du produit.
+
+**@return** *Product* - Retourne le produit ou *NULL* si rien n'est trouve.
+
 #### getProducts
+
+Recuperer la liste complete des produits du panier.
+
+**@param** *void*
+
+**@return** *Product[]* - Liste complete des produits du panier.
 
 #### addProduct
 
+Ajouter un produit au panier. Si le produit existe deja, seule sa quantite sera augmentee.
+
+**@param** *Product* - Le produit a ajouter.
+
+**@param** *int* - La quantite a affecter. Si ce parametre n'est pas defini, la quantite du produit passe en parametre sera prise en compte.
+
+**@return** *boolean* - Retourne vrai si le produit est ajoute ou si la quantite est modifiee.
+
 #### removeProduct
+
+Supprime un produit du panier.
+
+**@param** * int* - L'identifiant du produit a supprimer.
+
+**@return** *boolean* - Retourne vrai si le produit est supprime.
 
 #### setQty
 
