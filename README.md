@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Atelier e-shop.js
 
 You can use the [editor on GitHub](https://github.com/jhechavarria/atelier-e-shop-js/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
