@@ -21,6 +21,7 @@
 Assigne les proprietes d'un objet quelconque aux proprietes du produit.
 
 **@param** *Object* data - Objet source.
+
 **@return** *void*
 
 #### setQty
@@ -28,6 +29,7 @@ Assigne les proprietes d'un objet quelconque aux proprietes du produit.
 Definit la quantite du produit.
 
 **@param** *int* - Quantite a affecter.
+
 **@return** *void*
 
 #### increaseQty
@@ -35,6 +37,7 @@ Definit la quantite du produit.
 Augmente la quantite d'un produit.
 
 **@param** *qty* - Quantite a affecter. Augmente de 1 par defaut.
+
 **@return** *void*
 
 #### decreaseQty
@@ -42,6 +45,7 @@ Augmente la quantite d'un produit.
 Diminue la quantite d'un produit.
 
 **@param** *qty* - Quantite a affecter. Diminue de 1 par defaut.
+
 **@return** *void*
 
 #### equals
@@ -49,6 +53,7 @@ Diminue la quantite d'un produit.
 Compare deux produits.
 
 **@param** *Product* - Le produit a comparer.
+
 **@return** *boolean* - Retourne vrai si les deux produits sont egaux.
 
 #### clone
@@ -56,4 +61,5 @@ Compare deux produits.
 Cree une copie du produit courant.
 
 **@param** *void*
+
 **@return** *Product* - Le nouveau produit.

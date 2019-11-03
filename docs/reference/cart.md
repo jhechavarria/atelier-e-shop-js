@@ -9,6 +9,7 @@
 Charge les produits stockes en memoire.
 
 **@param** *void*
+
 **@return** *boolnqn* - Retourne vrai si le chargement est effectue
 
 #### save
@@ -16,6 +17,7 @@ Charge les produits stockes en memoire.
 Sauvegarde les produits du panier en memoire
 
 **@param** *void*
+
 **@return** *void*
 
 #### hasProduct
@@ -35,6 +37,7 @@ Sauvegarde les produits du panier en memoire
 Definit la quantite du produit.
 
 **@param** *int* - Quantite a affecter.
+
 **@return** *void*
 
 #### increaseQty
@@ -42,6 +45,7 @@ Definit la quantite du produit.
 Augmente la quantite d'un produit.
 
 **@param** *qty* - Quantite a affecter. Augmente de 1 par defaut.
+
 **@return** *void*
 
 #### decreaseQty
@@ -49,6 +53,7 @@ Augmente la quantite d'un produit.
 Diminue la quantite d'un produit.
 
 **@param** *qty* - Quantite a affecter. Diminue de 1 par defaut.
+
 **@return** *void*
 
 #### getTotal
