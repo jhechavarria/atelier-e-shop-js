@@ -1,6 +1,6 @@
 ## Atelier e-shop.js
 
-e-shop.js est un projet de groupe realise au cours de divers ateliers de developpement.
+e-shop.js est un projet de groupe realise au cours de divers ateliers de developpement a l'ecole.
 
 ### Kezako
 
