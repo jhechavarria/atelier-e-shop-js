@@ -124,11 +124,19 @@ Associe un callback a des evenements a ecouter.
 **@param** *funciton* - Le callback a appeler
 **@return** *void*
 
-##### Exemple
+```js
+# Exemple 1: Ecoute d'un evenement
+
+Cart.on('qtyChange', function(item) {
+    console.log('La quantite un produit '+item.name+' est passee a '+item.qty);
+});
+```
 
 ```js
+# Exemple 2: Ecoute de plusieurs evenements simultanement
+
 Cart.on('qtyChange productAdd productRemove', function() {
-    console.log('Le panier a ete mis a jour.);
+    console.log('Le panier a ete mis a jour.');
 });
 ```
 
