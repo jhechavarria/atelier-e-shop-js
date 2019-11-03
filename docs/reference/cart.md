@@ -126,15 +126,13 @@ Associe un callback a des evenements a ecouter.
 
 ```js
 // Exemple 1: Ecoute d'un evenement
-
 Cart.on('qtyChange', function(item) {
     console.log('La quantite un produit '+item.name+' est passee a '+item.qty);
 });
 ```
 
 ```js
-// Exemple 2: Ecoute de plusieurs evenements simultanement
-
+// Exemple 2: Ecoute simultanee de plusieurs evenements
 Cart.on('qtyChange productAdd productRemove', function() {
     console.log('Le panier a ete mis a jour.');
 });
