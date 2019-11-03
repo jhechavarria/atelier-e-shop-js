@@ -96,13 +96,41 @@ Diminue la quantite d'un produit.
 
 #### getTotal
 
+Calcule le prix total du panier.
+
+**@param** *void*
+**@return** *int* - Prix total du panier.
+
 #### count
 
+Compte le nombre de produits differents presents dans le panier.
+
+**@param** *void*
+
+**@return** *int* - Le nombre de produits differents dans le panier.
+
 #### clear
+
+Supprime tous les produits de la memoire et du panier.
+
+**@param** *void*
+**@return** *void*
 
 #### on
 
 Associe un callback a des evenements a ecouter.
+
+**@param** *string* - Evenements a ecouter.
+**@param** *funciton* - Le callback a appeler
+**@return** *void*
+
+##### Exemple
+
+```js
+Cart.on('qtyChange productAdd productRemove', function() {
+    console.log('Le panier a ete mis a jour.);
+});
+```
 
 ### Evenements
 
