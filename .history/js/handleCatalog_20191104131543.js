@@ -88,8 +88,6 @@ jQuery(function() {
     $('.cart .filters input').on('keyup', function() {
         let search = $(this).val().trim().toLowerCase();
 
-        $('.cart .filters .searching').slideDown("slow");
-
         clearTimeout(searchTimer);
 
         searchTimer = setTimeout(function() {
@@ -108,7 +106,6 @@ jQuery(function() {
                     $product.hide(0);
                 }
             });
-            $('.cart .filters .searching').slideUp("slow");
         }, searchTimeout);
     });
 

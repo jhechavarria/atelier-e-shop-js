@@ -6,7 +6,3 @@
     -webkit-box-orient: vertical;
     /* text-overflow: ellipsis; white-space: nowrap; */
   }
-
-.cart .filters .searching {
-    display: none;
-}

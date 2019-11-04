@@ -1,6 +1,4 @@
 jQuery(function() {
-    let searchTimeout = 500;
-    let searchTimer;
     let PRODUCT_TEMPLATE =
     '<div class="card col-md-6 col-lg-4 mb-5 product">'+
         '<img class="card-img-top" src="" alt="">'+
@@ -85,31 +83,24 @@ jQuery(function() {
     /**
      * Gerer le filtre de recherche par nom
      */
-    $('.cart .filters input').on('keyup', function() {
+    $('.cart .filters input').on('keypress change blur', function() {
         let search = $(this).val().trim().toLowerCase();
 
-        $('.cart .filters .searching').slideDown("slow");
+        if (search === "") {
+            $('.product', '.catalog .list').show();
+            return ;
+        }
 
-        clearTimeout(searchTimer);
+        $('.product', '.catalog .list').each(function(index, el) {
+            let $product = $(el);
+            let name = $('.card-title', $product).text().toLowerCase();
 
-        searchTimer = setTimeout(function() {
-            if (search === "") {
-                $('.product', '.catalog .list').show();
-                return ;
+            if (name.indexOf(search) !== -1) {
+                $product.show(0);
+            } else {
+                $product.hide(0);
             }
-
-            $('.product', '.catalog .list').each(function(index, el) {
-                let $product = $(el);
-                let name = $('.card-title', $product).text().toLowerCase();
-    
-                if (name.indexOf(search) !== -1) {
-                    $product.show(0);
-                } else {
-                    $product.hide(0);
-                }
-            });
-            $('.cart .filters .searching').slideUp("slow");
-        }, searchTimeout);
+        });
     });
 
     /**

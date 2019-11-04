@@ -7,6 +7,6 @@
     /* text-overflow: ellipsis; white-space: nowrap; */
   }
 
-.cart .filters .searching {
+  .searching {
     display: none;
-}
+  }

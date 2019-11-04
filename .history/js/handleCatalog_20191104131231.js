@@ -85,14 +85,15 @@ jQuery(function() {
     /**
      * Gerer le filtre de recherche par nom
      */
-    $('.cart .filters input').on('keyup', function() {
-        let search = $(this).val().trim().toLowerCase();
+    $('.cart .filters input').on('keypress change blur', function() {
+        let search = $(this).val().toLowerCase();
 
-        $('.cart .filters .searching').slideDown("slow");
+        console.log(search);
 
         clearTimeout(searchTimer);
 
         searchTimer = setTimeout(function() {
+            console.log(search);
             if (search === "") {
                 $('.product', '.catalog .list').show();
                 return ;
@@ -108,7 +109,6 @@ jQuery(function() {
                     $product.hide(0);
                 }
             });
-            $('.cart .filters .searching').slideUp("slow");
         }, searchTimeout);
     });
 
