@@ -23,6 +23,7 @@ Le projet consiste a creer une partie d'une application de vente en ligne: listi
 #### Propositions futures
 
 - Navigation par pagination / infinite scroll
+  - Bouton scrollToTop
 - Affichage des details du produit dans un modal (enlever description de la liste ou mettre extrait avec elypsis)
 - Drag&Drop pour ajouter / supprimer des produits du panier
 - Filtres produits

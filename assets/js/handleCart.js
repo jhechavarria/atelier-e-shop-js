@@ -1,32 +1,6 @@
 jQuery(function() {
-    let PRODUCT_TEMPLATE = 
-    '<div class="card mb-5 product">'+
-        '<div class="row">'+
-            '<div class="col-md-4 col-lg-4">'+
-                '<img class="card-img-top" src="" alt="">'+
-            '</div>' +
-            '<div class="col-md-8 col-lg-8">'+
-                '<p class="card-title"></p>'+
-            '</div>' +
-        '</div>' +
-        '<div class="row justify-content-center">'+
-            '<p class="col-md-12 col-lg-6 text-uppercase price"></p>'+    
-            '<p class="col-md-12 col-lg-6 text-uppercase bg-danger unavailable">Produit indisponible</p>'+    
-        '</div>' +
-        // '<hr>' +
-        '<div class="card-footer row">'+
-            '<div class="input-group col-md-8 col-lg-8">'+
-                '<div class="input-group-prepend">'+
-                    '<button class="btn btn-outline-secondary decr" type="button">-</button>'+
-                '</div>'+
-                '<input type="text" min="0" max="9" class="form-control text-center item-qty" placeholder="Quantite">'+
-                '<div class="input-group-append">'+
-                    '<button class="btn btn-outline-secondary incr" type="button">+</button>'+
-                '</div>'+
-            '</div>'+
-            '<button class="col-md-2 col-lg-2 btn btn-danger remove"><i class="fa fa-trash"></i></button>'+
-        '</div>'+
-    '</div>';
+    // Contient le template html d'un produit du panier
+    var PRODUCT_TEMPLATE;
 
     /**
      * Actions liees a l'ajout de produit
@@ -122,6 +96,10 @@ jQuery(function() {
      * pour verifier la disponibilite des produits
      */
     Catalog.on('load', function() {
-        Cart.load();
+        $.get('./assets/partials/cart_product.html')
+        .done(function(html) {
+            PRODUCT_TEMPLATE = html;
+            Cart.load();
+        })
     })
 });

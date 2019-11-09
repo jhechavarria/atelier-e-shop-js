@@ -4,6 +4,7 @@ var Catalog = new (function() {
 
     var _products = {};
     var catalogs = [];
+    var catalog_name_pattern = new RegExp('Catalogue[0-9]+\.js', 'i');
     var _callback = {
         onLoad: [],
         onProductLoad: []
@@ -20,7 +21,7 @@ var Catalog = new (function() {
         .done(function(html) {
             $('a', html).each(function(index) {
                 let a = $(this).attr('href');
-                if (a.endsWith('.json') && !catalogs.includes(a)) {
+                if (((catalog_name_pattern != null && a.match(catalog_name_pattern)) || a.endsWith('.js') || a.endsWith('.json')) && !catalogs.includes(a)) {
                     catalogs.push(a);
                 }
             });
@@ -37,9 +38,17 @@ var Catalog = new (function() {
      * @param string Nom du catalogue a charger
      * @return void
      */
-    var loadCatalog = function(catalogIndex, catalog) {
-        $.getJSON('./Data/'+catalog)
+    var loadCatalog = function(catalogIndex, cat) {
+        if (cat.endsWith('.json')) {
+            var call = $.getJSON('./Data/'+cat);
+        } else {
+            var call = $.getScript('./Data/'+cat)
+        }
+        call
         .done(function(products) {
+            if (cat.endsWith('.js')) {
+                products = catalog;
+            }
             for (var idx in products) {
                 var product = new Product(products[idx]);
                 product.id = idx;
