@@ -30,6 +30,11 @@ jQuery(function() {
     '</div>';
 
     /**
+     * Chargement initial du catalogue
+     */
+    Catalog.load();
+
+    /**
     * Gerer la quantite via les boutons
     */
    $('.list').on('click', '.product .decr, .product .incr', function(e) {
@@ -72,14 +77,14 @@ jQuery(function() {
      */
     $('.catalog .list').on('click', '.product .addProduct', function() {
         let $product = $(this).closest('.product');
-        let index = $product.attr('product');
+        let id = $product.attr('product');
         let qty = parseInt($('input', $product).val());
 
         if (qty === NaN) {
             qty = Catalog.MIN_QTY;
         }
 
-        Cart.addProduct(Catalog.products[index], qty);
+        Cart.addProduct(Catalog.getProduct(id), qty);
     });
 
     /**
@@ -114,8 +119,11 @@ jQuery(function() {
 
     /**
      * Generation initiale du panier
+     * 
+     * Plus rapide que le chargement
+     * au cas par cas via onProductLoad
      */
-    Catalog.load(function(products) {
+    Catalog.on('load', function(products) {
         for (let idx in products) {
             let product = products[idx];
             let $product = $(PRODUCT_TEMPLATE);

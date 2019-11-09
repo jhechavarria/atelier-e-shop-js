@@ -124,7 +124,7 @@ Associe un callback a des evenements a ecouter.
 
 **@param** *string* - Evenements a ecouter.
 
-**@param** *funciton* - Le callback a appeler
+**@param** *funciton* - Le callback a appeler lors du trigger
 
 **@return** *void*
 

@@ -10,10 +10,11 @@ jQuery(function() {
             '</div>' +
         '</div>' +
         '<div class="row justify-content-center">'+
-            '<p class="col-md-6 col-lg-4 text-uppercase price"></p>'+    
+            '<p class="col-md-12 col-lg-6 text-uppercase price"></p>'+    
+            '<p class="col-md-12 col-lg-6 text-uppercase bg-danger unavailable">Produit indisponible</p>'+    
         '</div>' +
         // '<hr>' +
-        '<div class="row">'+
+        '<div class="card-footer row">'+
             '<div class="input-group col-md-8 col-lg-8">'+
                 '<div class="input-group-prepend">'+
                     '<button class="btn btn-outline-secondary decr" type="button">-</button>'+
@@ -52,6 +53,10 @@ jQuery(function() {
 
             if (product instanceof Product === false) {
                 continue;
+            }
+
+            if (!Catalog.hasProduct(product.id)) {
+                $('.unavailable', $product).fadeIn();
             }
 
             $product.attr('product', product.id);
@@ -112,6 +117,11 @@ jQuery(function() {
 
     /**
      * Charger le panier sauvegarde en memoire
+     * 
+     * Le panier charge apres le chargement du catalogue
+     * pour verifier la disponibilite des produits
      */
-    Cart.load();
+    Catalog.on('load', function() {
+        Cart.load();
+    })
 });

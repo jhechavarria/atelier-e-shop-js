@@ -10,3 +10,7 @@
 .cart .filters .searching {
     display: none;
 }
+
+.cart .list .product .unavailable {
+  display: none;
+}

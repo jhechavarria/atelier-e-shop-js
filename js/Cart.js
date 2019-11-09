@@ -21,9 +21,9 @@ var Cart = new (function() {
         var cart = localStorage.getItem("cart");
 
         if (cart !== null) {
-            _products = JSON.parse(cart);
-            for (let idx in _products) {
-                let product = new Product(_products[idx]);
+            let products = JSON.parse(cart);
+            for (let idx in products) {
+                let product = new Product(products[idx]);
                 _products[product.id] = product;
             }
             for (var idx in _callback.onLoad) {
@@ -49,20 +49,13 @@ var Cart = new (function() {
     /**
      * Verifie qu'un produit existe
      * 
-     * @param Product Le produit a chercher
+     * @param mixed L'identifiant ou le produit a chercher
      * @return bool Retourne vrai si le produit existe
      */
-    this.hasProduct = function(item) {
-        return _products[item.id] !== undefined && _products[item.id] instanceof Product;
-    }
-
-    /**
-     * Verifie qu'un produit indexe au panier
-     * 
-     * @param int L'index du produit a verifier
-     * @return bool Retourne vrai si le produit existe
-     */
-    this.productIsIndexed = function(id) {
+    this.hasProduct = function(id) {
+        if (typeof id == 'object') {
+            id = id.id;
+        }
         return _products[id] !== undefined && _products[id] instanceof Product;
     }
 
@@ -73,7 +66,7 @@ var Cart = new (function() {
      * @return Product Retourne le produit trouve ou NULL
      */
     this.getProduct = function(id) {
-        if (this.productIsIndexed(index)) {
+        if (this.hasProduct(id)) {
             return _products[id];
         }
         return null;
@@ -129,7 +122,7 @@ var Cart = new (function() {
      * @return bool Retourne vrai si le produit a bien ete supprime
      */
     this.removeProduct = function(id) {
-        if (!this.productIsIndexed(id)) {
+        if (!this.hasProduct(id)) {
             return false;
         }
 
@@ -150,7 +143,7 @@ var Cart = new (function() {
      * @return bool Retourne vrai si l'ajout est effectue
      */
     this.setQty = function(id, qty) {
-        if (!this.productIsIndexed(id)) {
+        if (!this.hasProduct(id)) {
             return false;
         }
         _products[id].setQty(qty);
@@ -171,7 +164,7 @@ var Cart = new (function() {
      * @return bool Retourne vrai si l'icrementation est effectuee
      */
     this.increaseQty = function(id, incr=1) {
-        if (!this.productIsIndexed(id)) {
+        if (!this.hasProduct(id)) {
             return false;
         }
         _products[id].increaseQty(incr);
@@ -192,7 +185,7 @@ var Cart = new (function() {
      * @return bool Retourne vrai si la decrementation est effectuee
      */
     this.decreaseQty = function(id, decr=1) {
-        if (!this.productIsIndexed(id)) {
+        if (!this.hasProduct(id)) {
             return false;
         }
         _products[id].decreaseQty(decr);
@@ -217,7 +210,7 @@ var Cart = new (function() {
 
         for (idx in _products) {
             let product = _products[idx];
-            if (product instanceof Product === false) {
+            if (product instanceof Product === false || !Catalog.hasProduct(product)) {
                 continue;
             }
             total += product.price * product.qty;
@@ -243,6 +236,10 @@ var Cart = new (function() {
 
     /**
      * Evenements lies au panier
+     * 
+     * @param string L'evenement a ecouter
+     * @param function Le callback a appeler lors du trigger
+     * @return void
      */
     this.on = function(events, callback) {
         events = events.trim().split(' ');

@@ -34,8 +34,32 @@ Charge les catalogues a la volee.
 
 **@return** *Product* - Retourne le produit trouve ou *NULL* si aucun produit ne correspond a l'identifiant fourni.
 
+#### on
+
+Associe un callback a des evenements a ecouter.
+
+**@param** *string* - Evenements a ecouter.
+
+**@param** *funciton* - Le callback a appeler lors du trigger
+
+**@return** *void*
+
+```js
+// Exemple 1: Ecoute d'un evenement
+Cart.on('load', function(products) {
+    console.log(products);
+});
+```
+
+```js
+// Exemple 2: Ecoute simultanee de plusieurs evenements
+Cart.on('load clear', function() {
+    console.log('Ya, ya plus...');
+});
+```
+
 ### Evenements
 
-#### onLoad
+#### load
 
 **@param** *Product[]* - Liste des produits charges.
