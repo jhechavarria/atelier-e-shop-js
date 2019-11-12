@@ -14,7 +14,7 @@ jQuery(function () {
         $('.card-text', $product).text(product.description);
         $('.card-img-top', $product).attr('src', product.image).attr('alt', product.name);
         $('.cart-price', $product).html(product.price + ' &euro;');
-        $('.card-footer input', $product).val(product.qty);
+        $('input', $product).val(product.qty);
 
         $product.appendTo('.cart .list');
     });
@@ -52,6 +52,7 @@ jQuery(function () {
     $('.cart .list').on('qtyChange', '.product', function (e, qty) {
         let $product = $(this);
         let idx = $product.attr('product');
+        console.log(qty)
 
         if (qty < Catalog.MIN_QTY) {
             qty = Catalog.MIN_QTY;
