@@ -116,7 +116,7 @@ jQuery(function() {
     });
 
     /**
-     * Generation initiale du panier
+     * Generation initiale du catalogue
      * 
      * Plus rapide que le chargement
      * au cas par cas via onProductLoad
@@ -133,7 +133,7 @@ jQuery(function() {
                 for (let prop in product) {
                     let val = product[prop];
                     if (prop === "image" && (val === undefined || val === null || val === '')) {
-                        val = "./assets/img/no_available_image.png";
+                        val = "https://picsum.photos/400";
                     }
                     $product = $product.replace('#'+prop+'#', val);
                 }

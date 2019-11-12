@@ -1,17 +1,19 @@
-jQuery(function() {
+jQuery(function () {
     // Contient le template html d'un produit du panier
     var PRODUCT_TEMPLATE;
 
     /**
      * Actions liees a l'ajout de produit
      */
-    Cart.on('productAdd', function(product) {
+    Cart.on('productAdd', function (product) {
         let $product = $(PRODUCT_TEMPLATE);
 
         $product.attr('product', product.id);
-        $('.card-title', $product).text(product.name);
+        $('.title', $product).text(product.name);
+        // $('.qty', $product).text("x " + product.qty);
         $('.card-text', $product).text(product.description);
         $('.card-img-top', $product).attr('src', product.image).attr('alt', product.name);
+        $('.cart-price', $product).html(product.price + ' &euro;');
         $('.card-footer input', $product).val(product.qty);
 
         $product.appendTo('.cart .list');
@@ -20,7 +22,7 @@ jQuery(function() {
     /**
      * Actions liees au chargement initial du panier
      */
-    Cart.on('load', function(products) {
+    Cart.on('load', function (products) {
         for (let idx in products) {
             let product = products[idx];
             let $product = $(PRODUCT_TEMPLATE);
@@ -34,11 +36,12 @@ jQuery(function() {
             }
 
             $product.attr('product', product.id);
-            $('.card-title', $product).text(product.name);
+            $('.title', $product).text(product.name);
+            // $('.qty', $product).text("x " + product.qty);
             $('.card-img-top', $product).attr('src', product.image).attr('alt', product.name);
-            $('.card-footer input', $product).val(product.qty);
-            $('.price', $product).html(product.price + ' &euro;');
-    
+            $('.item-qty', $product).val(product.qty);
+            $('.cart-price', $product).html(product.price + ' &euro;');
+
             $product.appendTo('.cart .list');
         }
     });
@@ -46,7 +49,7 @@ jQuery(function() {
     /**
      * Gerer le changement de quantite
      */
-    $('.cart .list').on('qtyChange', '.product', function(e, qty) {
+    $('.cart .list').on('qtyChange', '.product', function (e, qty) {
         let $product = $(this);
         let idx = $product.attr('product');
 
@@ -61,21 +64,22 @@ jQuery(function() {
     /**
      * Actions liees a la modificaiton des quantites
      */
-    Cart.on('qtyChange', function(product) {
-        $('.product[product="'+product.id+'"] input', '.cart .list').val(product.qty);
+    Cart.on('qtyChange', function (product) {
+        $('.product[product="' + product.id + '"] input', '.cart .list').val(product.qty);
     });
 
     /**
      * Gerer le total du panier
      */
-    Cart.on('load productAdd productRemove qtyChange', function() {
+    Cart.on('load productAdd productRemove qtyChange', function () {
         $('.total-checkout').html(Cart.getTotal() + ' &euro;');
+        $('.total-items').html("(" + Cart.getProductsQty() + ")");
     });
 
     /**
      * Gerer la suppression d'un produit
      */
-    $('.cart .list').on('click', '.remove', function() {
+    $('.cart .list').on('click', '.remove', function () {
         let $product = $(this).closest('.product');
         let id = $product.attr('product');
 
@@ -85,8 +89,8 @@ jQuery(function() {
     /**
      * Actions liees a la suppresion des produits du panier
      */
-    Cart.on('productRemove', function(product) {
-        $('.product[product="'+product.id+'"]', '.cart .list').remove();
+    Cart.on('productRemove', function (product) {
+        $('.product[product="' + product.id + '"]', '.cart .list').remove();
     });
 
     /**
@@ -95,11 +99,11 @@ jQuery(function() {
      * Le panier charge apres le chargement du catalogue
      * pour verifier la disponibilite des produits
      */
-    Catalog.on('load', function() {
+    Catalog.on('load', function () {
         $.get('./assets/partials/cart_product.html')
-        .done(function(html) {
-            PRODUCT_TEMPLATE = html;
-            Cart.load();
-        })
+            .done(function (html) {
+                PRODUCT_TEMPLATE = html;
+                Cart.load();
+            })
     })
 });

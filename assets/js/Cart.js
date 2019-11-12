@@ -83,6 +83,22 @@ var Cart = new (function() {
     }
 
     /**
+     * Retourne le nombre total de produits 
+     * 
+     * @param void
+     * @return int
+     */
+    this.getProductsQty = function() {
+        var qty = 0;
+
+        for (let idx in _products) {
+            qty++;
+        }
+
+        return (qty);
+    }
+
+    /**
      * Ajoute un produit au panier
      * 
      * @param Product Produit a ajouter au panier

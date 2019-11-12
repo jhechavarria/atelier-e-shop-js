@@ -1,28 +1,33 @@
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>E-Shop</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- Main Style -->
+    <link rel="stylesheet" href="assets/css/bootstrap-additions.css">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
 </head>
+
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="catalog col-9">
                 <div class="list row">
-                    
+
                 </div>
             </div>
             <!-- style="position: fixed; right: 0;" -->
-            <div class="cart col-3">
+            <div class="cart col-3" style="position: fixed; right: 0; height: 100vh; overflow: scroll;">
                 <div class="filters">
-                    <input type="text" class="form-control" placeholder="Chercher un produit" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control" placeholder="Chercher un produit"
+                        aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <p class="searching">
                         Searching...
                     </p>
@@ -30,23 +35,38 @@
                 <div>
                     <h3 style="text-align:center;">Mon Panier</h3>
                 </div>
-                <div class="total-checkout">
-
-                </div>
                 <div class="list">
 
+                </div>
+                <div id="order-summary">
+                    <div>
+                        <span>Items: </span>
+                        <span class="total-items"></span>
+                    </div>
+                    <span>Total: </span>
+                    <span class="total-checkout"></span>
+                    <div>
+                        <button class="btn btn-success col-md-12 text-uppercase checkout-btn">Checkout</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <!-- FontAwesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"></script>
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <!-- Base Classes -->
     <script src="assets/js/Product.js"></script>
     <script src="assets/js/Cart.js"></script>
@@ -56,4 +76,5 @@
     <script src="assets/js/handleCatalog.js"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
+
 </html>
