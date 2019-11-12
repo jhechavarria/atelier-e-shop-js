@@ -14,3 +14,11 @@
 .cart .list .product .unavailable {
   display: none;
 }
+
+.catalog .list .addProduct.disabled {
+  opacity: 0.25;
+}
+
+.catalog .list .product.hidden {
+  display: none;
+}

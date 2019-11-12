@@ -49,6 +49,19 @@ jQuery(function() {
     });
 
     /**
+     * Gere l'affichage di bouton
+     */
+    $('.catalog .list').on('qtyChange', '.product', function(e, qty) {
+        let $product = $(this);
+
+        if (qty == 0) {
+            $('.addProduct', $product).addClass('disabled');
+        } else {
+             $('.addProduct', $product).removeClass('disabled');
+        }
+    });
+
+    /**
      * Gerer l'ajout de produits au panier
      */
     $('.catalog .list').on('click', '.product .addProduct', function() {
@@ -60,7 +73,14 @@ jQuery(function() {
             qty = Catalog.MIN_QTY;
         }
 
+        if (qty === 0) {
+            return false;
+        }
+
         Cart.addProduct(Catalog.getProduct(id), qty);
+
+        $('input', $product).val(Catalog.MIN_QTY);
+        $product.trigger('qtyChange', 0);
     });
 
     /**
@@ -75,20 +95,22 @@ jQuery(function() {
 
         searchTimer = setTimeout(function() {
             if (search === "") {
-                $('.product', '.catalog .list').show();
+                $('.product.hidden', '.catalog .list').removeClass('hidden');
                 return ;
             }
 
-            $('.product', '.catalog .list').each(function(index, el) {
-                let $product = $(el);
-                let name = $('.card-title', $product).text().toLowerCase();
-    
+            let products = Catalog.getProducts();
+
+            for (let id in products) {
+                let product = products[id];
+                let name = product.name.toLowerCase();
+
                 if (name.indexOf(search) !== -1) {
-                    $product.show(0);
+                    $product.addClass('hidden');
                 } else {
-                    $product.hide(0);
+                    $product.removeClass('hidden');
                 }
-            });
+            }
             $('.cart .filters .searching').slideUp("slow");
         }, searchTimeout);
     });
@@ -110,6 +132,9 @@ jQuery(function() {
 
                 for (let prop in product) {
                     let val = product[prop];
+                    if (prop === "image" && (val === undefined || val === null || val === '')) {
+                        val = "./assets/img/no_available_image.png";
+                    }
                     $product = $product.replace('#'+prop+'#', val);
                 }
                 $products += $product;

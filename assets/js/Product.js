@@ -4,7 +4,7 @@ var Product = function(data={}) {
     this.description = null;
     this.image = null;
     this.price = null;
-    this.qty = 1;
+    this.qty = 0;
 
     /**
      * Affecte les proprietes d'un objet quelconque au produit
