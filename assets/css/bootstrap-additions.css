@@ -1,0 +1,12 @@
+.no-gutter>[class*='col-'] {
+    padding-right: 0;
+    padding-left : 0;
+}
+
+.no-gutter-left>[class*='col-'] {
+    padding-left: 0;
+}
+
+.no-gutter-right>[class*='col-'] {
+    padding-right: 0;
+}
