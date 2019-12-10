@@ -3,86 +3,27 @@ var Catalog = new (function() {
     this.MAX_QTY = 9;
 
     var _products = {};
-    var catalogs = [];
     var catalog_name_pattern = new RegExp('Catalogue[0-9]+\.js', 'i');
     var _callback = {
-        onLoad: [],
-        onProductLoad: []
+        onLoad: []
     }
 
     /**
-     * Listing de tous les catalogues disponibles dans /Data
+     * Chargement initial du catalogue
      * 
-     * @param function Callback a appeler pour charger le catalogue
+     * @param VOID
      * @return void
      */
-    var loadCatalogsList = function(callback) {
-        $.get('./Data')
-        .done(function(html) {
-            $('a', html).each(function(index) {
-                let a = $(this).attr('href');
-                if (((catalog_name_pattern != null && a.match(catalog_name_pattern)) || a.endsWith('.js') || a.endsWith('.json')) && !catalogs.includes(a)) {
-                    catalogs.push(a);
-                }
-            });
-            for (let index in catalogs) {
-                callback(index, catalogs[index]);
-            }
-        });
-    }
-
-    /**
-     * Remplacer par un vrai chargement de catalogue :D
-     * 
-     * @param int Le numero de catalogue charge
-     * @param string Nom du catalogue a charger
-     * @return void
-     */
-    var loadCatalog = function(catalogIndex, cat) {
-        if (cat.endsWith('.json')) {
-            var call = $.getJSON('./Data/'+cat);
-        } else {
-            var call = $.getScript('./Data/'+cat)
+    this.load = function() {
+        for (var idx in catalogue) {
+            var product = new Product(catalogue[idx]);
+            product.id = idx;
+            product.id = JSON.stringify(product).hashCode();
+            _products[product.id] = product;
         }
-        call
-        .done(function(products) {
-            if (cat.endsWith('.js')) {
-                products = catalog;
-            }
-            for (var idx in products) {
-                var product = new Product(products[idx]);
-                product.id = idx;
-                product.id = JSON.stringify(product).hashCode();
-
-                _products[product.id] = product;
-                for (var idx in _callback.onProductLoad) {
-                    _callback.onProductLoad[idx](product);
-                }
-            }
-            if (catalogIndex == catalogs.length - 1) {
-                for (var idx in _callback.onLoad) {
-                    _callback.onLoad[idx](_products);
-                }
-            }
-        })
-        .fail(function(error) {
-            for (var idx in _callback.onLoad) {
-                _callback.onLoad[idx]({
-                    'type': 'error',
-                    'message': 'Impossible de charger le catalogue '+catalog
-                });
-            }
-        });
-    }
-
-    /**
-     * Charge la liste complete des catalogues
-     * 
-     * @param void
-     * @return void
-     */
-    this.load = function() {        
-        loadCatalogsList(loadCatalog);
+        for (let idx in _callback.onLoad) {
+            _callback.onLoad[idx](_products);
+        }
     }
 
     /**
@@ -143,6 +84,7 @@ var Catalog = new (function() {
             try {
                 f = event[0].toUpperCase();
                 event = f + event.slice(1, event.length);
+                console.log(event, _callback['on' + event])
                 _callback['on' + event].push(callback);
             } catch (error) {
                 console.log("Event "+event+" does not exists.");

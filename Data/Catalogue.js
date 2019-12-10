@@ -1,4 +1,4 @@
-[
+var catalogue = [
   {
     "name": "nulla nisi qui consequat laboris",
     "description": "Dolore quis velit non cillum. Enim proident incididunt minim ullamco officia adipisicing cupidatat reprehenderit reprehenderit. Excepteur ipsum in id est commodo dolor ad.\r\n",

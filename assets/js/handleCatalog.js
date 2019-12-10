@@ -6,11 +6,6 @@ jQuery(function() {
     let PRODUCT_TEMPLATE;
 
     /**
-     * Chargement initial du catalogue
-     */
-    Catalog.load();
-
-    /**
     * Gerer la quantite via les boutons
     */
    $('.list').on('click', '.product .decr, .product .incr', function(e) {
@@ -117,4 +112,9 @@ jQuery(function() {
             $($products).appendTo('.catalog .list');
         })
     });
+
+    /**
+     * Chargement initial du catalogue
+     */
+    Catalog.load();
 });
