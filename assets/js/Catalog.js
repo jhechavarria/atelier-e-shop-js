@@ -1,5 +1,5 @@
 var Catalog = new (function() {
-    this.MIN_QTY = 1;
+    this.MIN_QTY = 0;
     this.MAX_QTY = 9;
 
     var _products = {};
