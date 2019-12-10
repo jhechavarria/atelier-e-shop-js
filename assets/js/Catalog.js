@@ -20,6 +20,7 @@ var Catalog = new (function() {
             product.id = idx;
             product.id = JSON.stringify(product).hashCode();
             _products[product.id] = product;
+            console.log(_products.length)
         }
         for (let idx in _callback.onLoad) {
             _callback.onLoad[idx](_products);
@@ -66,6 +67,16 @@ var Catalog = new (function() {
     }
 
     /**
+     * Renvoie un produit specifique s'il existe
+     * 
+     * @param VOID
+     * @return Product[] lISTE DES PRODUITS DU CATALOGUE
+     */
+    this.getProducts = function(id) {
+        return _products;
+    }
+
+    /**
      * Evenements lies au panier
      * 
      * @param string L'evenement a ecouter
@@ -84,7 +95,6 @@ var Catalog = new (function() {
             try {
                 f = event[0].toUpperCase();
                 event = f + event.slice(1, event.length);
-                console.log(event, _callback['on' + event])
                 _callback['on' + event].push(callback);
             } catch (error) {
                 console.log("Event "+event+" does not exists.");

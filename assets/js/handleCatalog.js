@@ -97,8 +97,8 @@ jQuery(function() {
             let products = Catalog.getProducts();
 
             for (let id in products) {
-                let product = products[id];
-                let name = product.name.toLowerCase();
+                let $product = products[id];
+                let name = $product.name.toLowerCase();
 
                 if (name.indexOf(search) !== -1) {
                     $product.addClass('hidden');
