@@ -2,8 +2,6 @@ jQuery(function() {
     // Variables utilitaires pour la recherche dans le catalogue
     let searchTimeout = 500;
     let searchTimer;
-    // Contient le template html d'un produit du catalogue
-    let PRODUCT_TEMPLATE;
 
     /**
     * Gerer la quantite via les boutons
@@ -116,30 +114,60 @@ jQuery(function() {
      * Plus rapide que le chargement
      * au cas par cas via onProductLoad
      */
-    Catalog.on('load', function(products) {
-        $.get('./assets/partials/catalog_product.html')
-        .done(function(html) {
-            PRODUCT_TEMPLATE = html;
-            $products = "";
-            for (let idx in products) {
-                let product = products[idx];
-                let $product = PRODUCT_TEMPLATE;
+    Catalog.on('load', function() {
+        Pagination.setLength();
+        let $products = generateProducts();
+        $($products).appendTo('.catalog .list');
+    });
 
-                for (let prop in product) {
-                    let val = product[prop];
-                    if (prop === "image" && (val === undefined || val === null || val === '')) {
-                        val = "https://picsum.photos/400";
-                    }
-                    $product = $product.replace('#'+prop+'#', val);
-                }
-                $products += $product;
-            }
-            $($products).appendTo('.catalog .list');
-        })
+    $(document).on('scroll resize', function() {
+        displayImageFromVisibleProducts();
+        checkOnScrollPageLoad();
     });
 
     /**
      * Chargement initial du catalogue
      */
     Catalog.load();
+
+    function displayImageFromVisibleProducts() {
+        $('.list .product').each(function(index) {
+            $product = $(this);
+            $img = $('img', $product);
+    
+            if ($product.isInViewport() && $img.attr('src') != $img.attr('data-src')) {
+                $img.attr('src', $img.attr('data-src'));
+            }
+        });
+    }
+
+    function generateProducts() {
+        let products = Catalog.getArrayProducts();
+        let $products = "";
+        let page_range = Pagination.getPageRange();
+        for (let idx = page_range.start; idx <= page_range.end; idx++) {
+            let product = products[idx];
+            let $product = CATALOG_PRODUCT_TEMPLATE;
+
+            for (let prop in product) {
+                let val = product[prop];
+                if (prop === "image" && (val === undefined || val === null || val === '')) {
+                    val = "./assets/img/no_available_image.png";
+                } else if (prop === "image") {
+                    val = './data/' + val;
+                }
+                $product = $product.replace('#'+prop+'#', val);
+            }
+            $products += $product;
+        }
+        return $products;
+    }
+
+    function checkOnScrollPageLoad() {
+        if ($('.loadOnScroll').isInViewport()) {
+            Pagination.current++;
+            let $products = generateProducts();
+            $($products).appendTo('.catalog .list');
+        }
+    }
 });

@@ -1,12 +1,10 @@
 jQuery(function () {
-    // Contient le template html d'un produit du panier
-    var PRODUCT_TEMPLATE;
 
     /**
      * Actions liees a l'ajout de produit
      */
     Cart.on('productAdd', function (product) {
-        let $product = $(PRODUCT_TEMPLATE);
+        let $product = $(CART_PRODUCT_TEMPLATE);
 
         $product.attr('product', product.id);
         $('.title', $product).text(product.name);
@@ -25,7 +23,7 @@ jQuery(function () {
     Cart.on('load', function (products) {
         for (let idx in products) {
             let product = products[idx];
-            let $product = $(PRODUCT_TEMPLATE);
+            let $product = $(CART_PRODUCT_TEMPLATE);
 
             if (product instanceof Product === false) {
                 continue;
@@ -101,10 +99,6 @@ jQuery(function () {
      * pour verifier la disponibilite des produits
      */
     Catalog.on('load', function () {
-        $.get('./assets/partials/cart_product.html')
-            .done(function (html) {
-                PRODUCT_TEMPLATE = html;
-                Cart.load();
-            })
+        Cart.load();
     })
 });

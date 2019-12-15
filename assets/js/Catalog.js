@@ -20,7 +20,6 @@ var Catalog = new (function() {
             product.id = idx;
             product.id = JSON.stringify(product).hashCode();
             _products[product.id] = product;
-            console.log(_products.length)
         }
         for (let idx in _callback.onLoad) {
             _callback.onLoad[idx](_products);
@@ -67,13 +66,33 @@ var Catalog = new (function() {
     }
 
     /**
-     * Renvoie un produit specifique s'il existe
+     * Renvoie tous les produits s'ils existent
      * 
      * @param VOID
-     * @return Product[] lISTE DES PRODUITS DU CATALOGUE
+     * @return Product{} Liste des produits du catalogue
      */
     this.getProducts = function(id) {
         return _products;
+    }
+
+    /**
+     * Renvoie tous les produits s'ils existent sous forme de tableau
+     * 
+     * @param VOID
+     * @return Product[] Liste des produits du catalogue
+     */
+    this.getArrayProducts = function(id) {
+        return Object.values(_products);
+    }
+
+    /**
+     * Renvoie le nombre de produits dans le catalogue
+     * 
+     * @param VOID
+     * @return int Le nombre de produits du catalogue
+     */
+    this.countProducts = function(id) {
+        return this.getArrayProducts().length;
     }
 
     /**

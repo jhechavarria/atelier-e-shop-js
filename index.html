@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -6,13 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>E-Shop</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <!-- Main Style -->
-    <link rel="stylesheet" href="assets/css/bootstrap-additions.css">
-    <link rel="stylesheet" href="assets/css/stylesheet.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap-additions.css">
+    <link rel="stylesheet" href="./assets/css/stylesheet.css">
 </head>
 
 <body>
@@ -21,6 +21,22 @@
             <div class="catalog col-9">
                 <div class="list row">
 
+                </div>
+                <div class="loadOnScroll row">
+                    <div class="col-6 offset-6">
+                        <img src="./assets/img/loading.gif" alt="Loading">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="pagination-container">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link prev" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link next" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
             <!-- style="position: fixed; right: 0;" -->
@@ -52,30 +68,24 @@
             </div>
         </div>
     </div>
+    <!-- jQuery -->
+    <script src="./assets/js/jquery-3.4.1.min.js"></script>
     <!-- Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
     <!-- FontAwesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <!-- Base Classes -->
-    <script src="Data/Catalogue.js"></script>
-    <script src="assets/js/Product.js"></script>
-    <script src="assets/js/Cart.js"></script>
-    <script src="assets/js/Catalog.js"></script>
+    <script src="./data/Catalogue.js"></script>
+    <script src="./assets/js/partials/catalog_product.js"></script>
+    <script src="./assets/js/partials/cart_product.js"></script>
+    <script src="./assets/js/Product.js"></script>
+    <script src="./assets/js/Cart.js"></script>
+    <script src="./assets/js/Catalog.js"></script>
+    <script src="./assets/js/Pagination.js"></script>
     <!-- Main Script -->
-    <script src="assets/js/handleCart.js"></script>
-    <script src="assets/js/handleCatalog.js"></script>
-    <script src="assets/js/scripts.js"></script>
+    <script src="./assets/js/handleCart.js"></script>
+    <script src="./assets/js/handleCatalog.js"></script>
+    <script src="./assets/js/scripts.js"></script>
 </body>
 
 </html>
