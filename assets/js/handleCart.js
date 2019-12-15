@@ -29,7 +29,7 @@ jQuery(function () {
                 continue;
             }
 
-            if (!Catalog.hasProduct(product.id)) {
+            if (Catalog.hasProduct(product.id) === false) {
                 $('.unavailable', $product).fadeIn();
             }
 
@@ -50,7 +50,6 @@ jQuery(function () {
     $('.cart .list').on('qtyChange', '.product', function (e, qty) {
         let $product = $(this);
         let idx = $product.attr('product');
-        console.log(qty)
 
         if (qty < Catalog.MIN_QTY) {
             qty = Catalog.MIN_QTY;
@@ -81,6 +80,7 @@ jQuery(function () {
     $('.cart .list').on('click', '.remove', function () {
         let $product = $(this).closest('.product');
         let id = $product.attr('product');
+        console.log(id);
 
         Cart.removeProduct(id);
     });

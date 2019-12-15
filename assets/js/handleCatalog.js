@@ -87,25 +87,51 @@ jQuery(function() {
         clearTimeout(searchTimer);
 
         searchTimer = setTimeout(function() {
-            if (search === "") {
-                $('.product.hidden', '.catalog .list').removeClass('hidden');
-                return ;
-            }
-
-            let products = Catalog.getProducts();
-
-            for (let id in products) {
-                let $product = products[id];
-                let name = $product.name.toLowerCase();
-
-                if (name.indexOf(search) !== -1) {
-                    $product.addClass('hidden');
-                } else {
-                    $product.removeClass('hidden');
-                }
-            }
+            Catalog.searchProducts(search, initialProductsLoad);
             $('.cart .filters .searching').slideUp("slow");
         }, searchTimeout);
+    });
+
+    /**
+     * Gère l'affichage des images
+     * Gère le chargement des produits
+     */
+    $(document).on('scroll resize', function() {
+        checkOnScrollPageLoad();
+        displayImageFromVisibleProducts();
+    });
+
+    /**
+     * Gère l'ordre des produits
+     */
+    $('select[name="orderBy"]').on('change', function() {
+        let val = $(this).val().split(' ');
+        Catalog.orderBy(val[0], val[1]);
+        initialProductsLoad();
+    });
+
+    /**
+     * Gère le nombre de ^produits à charger par page
+     */
+    $('select[name="itemsPerPage"]').on('change', function() {
+        let val = $(this).val();
+        Pagination.setItemsPerPage(val);
+    });
+
+    /**
+     * Définit le type de pagination à utiliser
+     */
+    $('.switchPagination').on('click', function() {
+        let loadOnScroll = $(this).is(':checked');
+        Pagination.loadOnScroll = loadOnScroll;
+
+        if (loadOnScroll) {
+            $('.pagination').fadeOut();
+            $('.loadOnScroll').fadeIn();
+        } else {
+            $('.pagination').fadeIn();
+            $('.loadOnScroll').fadeOut();
+        }
     });
 
     /**
@@ -117,12 +143,19 @@ jQuery(function() {
     Catalog.on('load', function() {
         Pagination.setLength();
         let $products = generateProducts();
+        if (Pagination.loadOnScroll) {
+            $('.pagination').fadeOut();
+            $('.loadOnScroll').fadeIn();
+        } else {
+            $('.pagination').fadeIn();
+            $('.loadOnScroll').fadeOut();
+            generatePaginationLinks();
+        }
         $($products).appendTo('.catalog .list');
-    });
-
-    $(document).on('scroll resize', function() {
-        displayImageFromVisibleProducts();
-        checkOnScrollPageLoad();
+        setTimeout(function() {
+            displayImageFromVisibleProducts();
+            $('.catalog-loader').css('width', '0');
+        }, 1000);
     });
 
     /**
@@ -130,6 +163,9 @@ jQuery(function() {
      */
     Catalog.load();
 
+    /**
+     * Gère l'affichage des images des produits
+     */
     function displayImageFromVisibleProducts() {
         $('.list .product').each(function(index) {
             $product = $(this);
@@ -141,13 +177,21 @@ jQuery(function() {
         });
     }
 
+    /**
+     * Génère l
+     */
     function generateProducts() {
-        let products = Catalog.getArrayProducts();
+        let products = Catalog.getProducts();
         let $products = "";
         let page_range = Pagination.getPageRange();
+        Pagination.loadedItems += Pagination.itemsPerPage;
         for (let idx = page_range.start; idx <= page_range.end; idx++) {
             let product = products[idx];
             let $product = CATALOG_PRODUCT_TEMPLATE;
+
+            if (product == undefined) {
+                break;
+            }
 
             for (let prop in product) {
                 let val = product[prop];
@@ -163,11 +207,48 @@ jQuery(function() {
         return $products;
     }
 
+    /**
+     * Gère le chargement des produits on scroll
+     */
     function checkOnScrollPageLoad() {
-        if ($('.loadOnScroll').isInViewport()) {
+        if ($('.loadOnScroll').isInViewport() && Pagination.loadOnScroll
+            && Pagination.loadedItems < Catalog.countProducts()) {
             Pagination.current++;
             let $products = generateProducts();
             $($products).appendTo('.catalog .list');
         }
     }
+
+    function initialProductsLoad() {
+        Pagination.setLength();
+        Pagination.loadedItems = 0;
+        let $products = generateProducts();
+        if (Pagination.loadOnScroll) {
+            $('.pagination').fadeOut();
+            $('.loadOnScroll').fadeIn();
+        } else {
+            $('.pagination').fadeIn();
+            $('.loadOnScroll').fadeOut();
+            generatePaginationLinks();
+        }
+        $('.catalog .list').html($products);
+        setTimeout(function() {
+            displayImageFromVisibleProducts();
+        }, 1000);
+    }
+
+    /**
+     * Génère les liens de pagination classique
+     *
+    function generatePaginationLinks() {
+        $('.pagination .page-item .page-link:not(.prev):not(.next)').remove();
+        for (let i = 1; i <= Pagination.length; i++) {
+            $('.pagination').each(function() {
+                $pagination = $(this);
+                $last = $('.page-item:last', $pagination);
+                $('<li class="page-item"><a class="page-link" href="#">'+i+'</a></li>').insertBefore($last);
+            });
+        }
+    }
+    */
 });

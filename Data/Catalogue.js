@@ -2,7 +2,7 @@ var catalogue = [
   {
     "name": "aliqua mollit fugiat aute est",
     "description": "Sunt exercitation sit nostrud Lorem consectetur cupidatat. Excepteur commodo laborum magna incididunt officia esse. Ex eiusmod dolor voluptate ut ad labore labore non labore est fugiat occaecat. Nulla nostrud adipisicing elit dolore ea non enim duis aliqua aliquip officia eiusmod elit quis. Eu aute velit ex excepteur sint.\r\n",
-    "image": "/images/product.jpg",
+    "image": "",
     "price": 74.52
   },
   {

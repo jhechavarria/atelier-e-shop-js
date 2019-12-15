@@ -16,17 +16,45 @@
 </head>
 
 <body>
+    <div class="catalog-loader d-flex justify-content-center">
+        <div class="spinner spinner-border text-light" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="catalog col-9">
-                <div class="list row">
-
-                </div>
-                <div class="loadOnScroll row">
-                    <div class="col-6 offset-6">
-                        <img src="./assets/img/loading.gif" alt="Loading">
+                <div class="row filters">
+                    <div class="col-6">
+                        <select name="orderBy" id="orderBy" class="form-control">
+                            <option value="name asc" selected disabled>Order By</option>
+                            <option value="name asc">Name from A to Z</option>
+                            <option value="name desc">Name from Z to A</option>
+                            <option value="price asc">Increasing price</option>
+                            <option value="price desc">Decreasing price</option>
+                        </select>
                     </div>
+                    <div class="col-6">
+                        <select name="itemsPerPage" id="itemsPerPage" class="form-control">
+                            <option value="10" selected disabled>Items to load</option>
+                            <option value="10">10 products</option>
+                            <option value="20">20 products</option>
+                            <option value="30">30 products</option>
+                            <option value="50">50 products</option>
+                            <option value="100">100 products</option>
+                        </select>
+                    </div>
+                    <!--
+                        Switch entre pagination classique et infinite scroll
+                    <div class="col-4">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input switchPagination" id="customSwitch1">
+                            <label class="custom-control-label" for="customSwitch1">Load on scroll</label>
+                        </div>
+                    </div>
+                    -->
                 </div>
+                <!--
                 <div class="row">
                     <div class="col-12">
                         <nav aria-label="pagination-container">
@@ -38,6 +66,28 @@
                         </nav>
                     </div>
                 </div>
+                -->
+                <div class="list row">
+
+                </div>
+                <div class="loadOnScroll row">
+                    <div class="col-6 offset-6">
+                        <img src="./assets/img/loading.gif" alt="Loading">
+                    </div>
+                </div>
+                <!--
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="pagination-container">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link prev" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link next" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                -->
             </div>
             <!-- style="position: fixed; right: 0;" -->
             <div class="cart col-3" style="position: fixed; right: 0; height: 100vh; overflow: scroll;">

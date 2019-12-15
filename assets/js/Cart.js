@@ -226,7 +226,7 @@ var Cart = new (function() {
 
         for (idx in _products) {
             let product = _products[idx];
-            if (product instanceof Product === false || !Catalog.hasProduct(product)) {
+            if (product instanceof Product === false || Catalog.hasProduct(product) === false) {
                 continue;
             }
             total += product.price * product.qty;
