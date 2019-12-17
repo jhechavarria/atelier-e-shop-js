@@ -241,9 +241,9 @@ var Cart = new (function() {
      * @return void
      */
     this.clear = function() {
-        _products = {};
-
-        localStorage.removeItem("cart");
+        for (let prop in _products) {
+            this.removeProduct(prop);
+        }
 
         for (var idx in _callback.onClear) {
             _callback.onClear[idx]();
