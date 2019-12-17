@@ -15,6 +15,14 @@ jQuery(function () {
         $('input', $product).val(product.qty);
 
         $product.appendTo('.cart .list');
+
+        Toast.add({
+            title: 'Product added',
+            info: 'CART',
+            body: product.name,
+            duration: 3500,
+            color: 'success'
+        });
     });
 
     /**
@@ -80,7 +88,6 @@ jQuery(function () {
     $('.cart .list').on('click', '.remove', function () {
         let $product = $(this).closest('.product');
         let id = $product.attr('product');
-        console.log(id);
 
         Cart.removeProduct(id);
     });
@@ -90,6 +97,13 @@ jQuery(function () {
      */
     Cart.on('productRemove', function (product) {
         $('.product[product="' + product.id + '"]', '.cart .list').remove();
+    });
+
+    /**
+     * Vide la panier
+     */
+    $('.clear-cart').on('click', function() {
+        Cart.clear();
     });
 
     /**
