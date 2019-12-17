@@ -79,16 +79,16 @@ jQuery(function() {
     /**
      * Gerer le filtre de recherche par nom
      */
-    $('.cart .filters input').on('keyup', function() {
+    $('#search').on('keyup', function() {
         let search = $(this).val().trim().toLowerCase();
 
-        $('.cart .filters .searching').slideDown("slow");
+        $('#searching').slideDown("slow");
 
         clearTimeout(searchTimer);
 
         searchTimer = setTimeout(function() {
             Catalog.searchProducts(search, initialProductsLoad);
-            $('.cart .filters .searching').slideUp("slow");
+            $('#searching').slideUp("slow");
         }, searchTimeout);
     });
 
