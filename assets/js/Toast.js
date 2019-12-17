@@ -1,6 +1,6 @@
 var Toast = new (function() {
     var toast =
-    '<div class="toast">'+
+    '<div class="toast fixed-top">'+
         '<div class="toast-header">'+
             '<strong class="mr-auto text-primary"></strong>'+
             '<small class="text-muted"></small>'+
