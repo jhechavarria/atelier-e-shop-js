@@ -26,7 +26,7 @@
         <div class="row">
             <div class="catalog col-9">
                 <div class="row filters">
-                    <div class="col-6">
+                    <div class="col">
                         <select name="orderBy" id="orderBy" class="form-control">
                             <option value="name asc" selected disabled>Order By</option>
                             <option value="name asc">Name from A to Z</option>
@@ -35,7 +35,7 @@
                             <option value="price desc">Decreasing price</option>
                         </select>
                     </div>
-                    <div class="col-6">
+                    <div class="col">
                         <select name="itemsPerPage" id="itemsPerPage" class="form-control">
                             <option value="10" selected disabled>Items to load</option>
                             <option value="10">10 products</option>
@@ -44,6 +44,13 @@
                             <option value="50">50 products</option>
                             <option value="100">100 products</option>
                         </select>
+                    </div>
+                    <div class="col">
+                        <button class="navbar-toggler hidden-lg-up" data-toggle="drawer" data-target="#my-drawer"
+                            type="button">
+                            <span class="sr-only">Toggle drawer</span>
+                            <i class="material-icons">menu</i>
+                        </button>
                     </div>
                     <!--
                         Switch entre pagination classique et infinite scroll
@@ -90,7 +97,10 @@
                 </div>
                 -->
             </div>
+
             <!-- style="position: fixed; right: 0;" -->
+
+
             <div class="cart col-3" style="position: fixed; right: 0; height: 100vh; overflow: scroll;">
                 <div class="filters">
                     <input type="text" class="form-control" placeholder="Chercher un produit"
@@ -99,8 +109,13 @@
                         Searching...
                     </p>
                 </div>
-                <div>
-                    <h3 style="text-align:center;">Mon Panier</h3>
+                <div class="row">
+                    <div class="col">
+                        <h3>Mon Panier</h3>
+                    </div>
+                    <div class="col">
+                        <button class="clear-cart btn btn-warning btn-sm">clear</button>
+                    </div>
                 </div>
                 <div class="list">
 
