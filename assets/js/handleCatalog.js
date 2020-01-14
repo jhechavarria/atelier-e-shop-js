@@ -83,12 +83,23 @@ jQuery(function() {
         let search = $(this).val().trim().toLowerCase();
 
         $('#searching').slideDown("slow");
+        $('.loadOnScroll, .noProductsFound').fadeOut();
 
         clearTimeout(searchTimer);
 
         searchTimer = setTimeout(function() {
-            Catalog.searchProducts(search, initialProductsLoad);
-            $('#searching').slideUp("slow");
+            Catalog.searchProducts(search, function(found) {
+                initialProductsLoad();
+                if ($('.catalog .list .product').length <= Catalog.getProducts().length) {
+                    $(".loadOnScroll").fadeOut("slow");
+                }
+                if (found) {
+                    $('.noProductsFound').fadeOut();
+                } else {
+                    $('.noProductsFound').fadeIn('slow');
+                }
+            });
+            $('#searching').slideUp();
         }, searchTimeout);
     });
 
@@ -99,6 +110,9 @@ jQuery(function() {
     $(document).on('scroll resize', function() {
         checkOnScrollPageLoad();
         displayImageFromVisibleProducts();
+        if ($('.catalog .list .product').length <= Catalog.getProducts().length) {
+            $(".loadOnScroll").fadeIn("slow");
+        }
     });
 
     /**
@@ -141,6 +155,10 @@ jQuery(function() {
      * au cas par cas via onProductLoad
      */
     Catalog.on('load', function() {
+        if (!Catalog.catalogExists-)) {
+            $(".loadOnScroll").fadeOut("slow");$
+            $('.noProductsFound').fadeIn('slow');
+        }
         Pagination.setLength();
         let $products = generateProducts();
         if (Pagination.loadOnScroll) {

@@ -9,7 +9,7 @@ var CATALOG_PRODUCT_TEMPLATE = '<div class="card col-md-6 col-lg-4 mb-5 product"
             '<div class="input-group-prepend">'+
                 '<button class="btn btn-outline-secondary decr" type="button">-</button>'+
             '</div>'+
-            '<input type="test" min="0" max="9" class="form-control text-center" placeholder="Quantite" value="#qty#">'+
+            '<input type="number" min="0" max="9" class="form-control text-center" placeholder="Quantite" value="#qty#">'+
             '<div class="input-group-append">'+
                 '<button class="btn btn-outline-secondary incr" type="button">+</button>'+
             '</div>'+
