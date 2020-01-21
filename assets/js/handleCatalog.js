@@ -154,7 +154,7 @@ jQuery(function() {
      * Récupère et insère les données dans le modal
      * lors de son ouverture
      */
-    $('.catalog .list').on('click', '[data-toggle="modal"]', function() {
+    $('.catalog .list').on('click', '[data-target="#product-details"]', function() {
         let $product = CATALOG_PRODUCT_TEMPLATE;
         let product = $(this).closest('.product').attr('product');
         product = Catalog.getProduct(product);

@@ -60,6 +60,16 @@ var Cart = new (function() {
     }
 
     /**
+     * Vérifie si le panier contient des produits
+     * 
+     * @param void
+     * @returns bool Retourne vrai si le panier contient des produits
+     */
+    this.hasProducts = function() {
+        return Object.keys(_products).length > 0;
+    }
+
+    /**
      * Retourne un produit
      * 
      * @param int L'index du produit a chercher

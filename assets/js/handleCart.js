@@ -19,10 +19,12 @@ jQuery(function () {
         Toast.add({
             title: 'Product added',
             info: 'CART',
-            body: product.name,
+            body: product.name + " added to cart!",
             duration: 3500,
             color: 'success'
         });
+        
+        $('[data-target="#clear-cart"]').fadeIn();
     });
 
     /**
@@ -49,6 +51,9 @@ jQuery(function () {
             $('.cart-price', $product).html(product.price + ' &euro;');
 
             $product.appendTo('.cart .list');
+        }
+        if (Cart.hasProducts()) {
+            $('[data-target="#clear-cart"]').fadeIn();
         }
     });
 
@@ -97,6 +102,9 @@ jQuery(function () {
      */
     Cart.on('productRemove', function (product) {
         $('.product[product="' + product.id + '"]', '.cart .list').remove();
+        if (!Cart.hasProducts()) {
+            $('[data-target="#clear-cart"]').fadeOut();
+        }
     });
 
     /**

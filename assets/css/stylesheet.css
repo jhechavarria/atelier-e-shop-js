@@ -65,3 +65,7 @@
   width: 90px;
   display: inline-block;
 }
+
+[data-target="#clear-cart"] {
+  display: none;
+}
