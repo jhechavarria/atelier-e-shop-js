@@ -1,7 +1,7 @@
 var CATALOG_PRODUCT_TEMPLATE = '<div class="card col-md-6 col-lg-4 mb-5 product" product="#id#">'+
-    '<img class="card-img-top" src="./assets/img/loading.gif" data-src="#image#" alt="">'+
+    '<img class="card-img-top" src="./assets/img/loading.gif" data-src="#image#" alt="#name#" data-toggle="modal" data-target="#product-details" />'+
     '<div class="card-body justify-content-around">'+
-        '<h5 class="card-title">#name#</h5>'+
+        '<h5 class="card-title" data-toggle="modal" data-target="#product-details">#name#</h5>'+
         '<p class="card-text catalog-item-description">#description#</p>'+
     '</div>'+
     '<div class="card-footer row align-items-center">'+

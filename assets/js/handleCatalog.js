@@ -6,7 +6,7 @@ jQuery(function() {
     /**
     * Gerer la quantite via les boutons
     */
-   $('.list').on('click', '.product .decr, .product .incr', function(e) {
+   $('.list, .modal').on('click', '.product .decr, .product .incr', function(e) {
        let $input = $('input', $(this).closest('.input-group'));
        let qty = parseInt($input.val());
 
@@ -26,7 +26,7 @@ jQuery(function() {
    /**
      * Gerer la quantite via l'input
      */
-    $('.list').on('keypress change blur', 'input', function(e) {
+    $('.list .modal').on('keypress change blur', '.product input', function(e) {
         let $input = $(this);
         let qty = $input.val();
 
@@ -42,9 +42,9 @@ jQuery(function() {
     });
 
     /**
-     * Gere l'affichage di bouton
+     * Gere l'affichage du bouton
      */
-    $('.catalog .list').on('qtyChange', '.product', function(e, qty) {
+    $('.catalog .list, .modal').on('qtyChange', '.product', function(e, qty) {
         let $product = $(this);
 
         if (qty == 0) {
@@ -57,7 +57,7 @@ jQuery(function() {
     /**
      * Gerer l'ajout de produits au panier
      */
-    $('.catalog .list').on('click', '.product .addProduct', function() {
+    $('.catalog .list, .modal').on('click', '.product .addProduct', function() {
         let $product = $(this).closest('.product');
         let id = $product.attr('product');
         let qty = parseInt($('input', $product).val());
@@ -149,13 +149,43 @@ jQuery(function() {
     });
 
     /**
+     * Gestion de l'initialisation du modal de détails des produits
+     * 
+     * Récupère et insère les données dans le modal
+     * lors de son ouverture
+     */
+    $('.catalog .list').on('click', '[data-toggle="modal"]', function() {
+        let $product = CATALOG_PRODUCT_TEMPLATE;
+        let product = $(this).closest('.product').attr('product');
+        product = Catalog.getProduct(product);
+
+        for (let prop in product) {
+            let val = product[prop];
+            console.log(prop + " - " + val)
+            if (prop === "image" && (val === undefined || val === null || val === '')) {
+                val = "./assets/img/no_available_image.png";
+            } else if (prop === "image") {
+                val = './data/' + val;
+            }
+            let regexp = new RegExp('#'+prop+'#', 'g');
+            $product = $product.replace(regexp, val);
+        }
+        $('.modal .modal-header h5').html(product.name);
+        $('.modal .modal-body').html($product);
+        $('.modal .modal-body .product')
+            .removeClass('col-md-6 col-lg-4 mb-5')
+            .addClass('col-12');
+        $('.modal .modal-body .product img').attr('src', $('.modal .modal-body .product img').attr('data-src'));
+    });
+
+    /**
      * Generation initiale du catalogue
      * 
      * Plus rapide que le chargement
      * au cas par cas via onProductLoad
      */
     Catalog.on('load', function() {
-        if (!Catalog.catalogExists-)) {
+        if (!Catalog.catalogExists()) {
             $(".loadOnScroll").fadeOut("slow");$
             $('.noProductsFound').fadeIn('slow');
         }
@@ -218,7 +248,8 @@ jQuery(function() {
                 } else if (prop === "image") {
                     val = './data/' + val;
                 }
-                $product = $product.replace('#'+prop+'#', val);
+                let regexp = new RegExp('#'+prop+'#', 'g');
+                $product = $product.replace(regexp, val);
             }
             $products += $product;
         }
