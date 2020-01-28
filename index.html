@@ -16,15 +16,21 @@
 </head>
 
 <body>
+    <!-- Toasts -->
     <div class="toasts d-flex justify-content-center align-items-center"></div>
+    <!-- /Toasts -->
+    <!-- Global Page Loader -->
     <div class="catalog-loader d-flex justify-content-center">
         <div class="spinner spinner-border text-light" role="status">
             <span class="sr-only">Loading...</span>
         </div>
     </div>
+    <!-- /Global Page Loader -->
+    <!-- Main Content -->
     <div class="container-fluid">
         <div class="row py-5">
             <div class="catalog col-9">
+                <!-- Catalog Filters -->
                 <div class="row fixed-top bg-white filters">
                     <div class="col">
                         <select name="orderBy" id="orderBy" class="form-control">
@@ -64,6 +70,7 @@
                     </div>
                     -->
                 </div>
+                <!-- /Catalog Filters -->
                 <!--
                 <div class="row">
                     <div class="col-12">
@@ -80,6 +87,7 @@
                 <div class="list row">
 
                 </div>
+                <!-- Catalog Context Infos -->
                 <div class="loadOnScroll row">
                     <div class="col-6 offset-5">
                         <img src="./assets/img/loading.gif" alt="Loading">
@@ -90,6 +98,7 @@
                         <p>No products found in catalog.</p>
                     </div>
                 </div>
+                <!-- /Catalog Context Infos -->
                 <!--
                 <div class="row">
                     <div class="col-12">
@@ -107,9 +116,8 @@
 
             <!-- style="position: fixed; right: 0;" -->
 
-
             <div class="cart col-3" style="position: fixed; right: 0; height: 100vh; overflow: scroll;">
-                
+                <!-- Cart Header -->
                 <div class="row">
                     <div class="col">
                         <h3>My Cart</h3>
@@ -118,6 +126,8 @@
                         <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#clear-cart">clear</button>
                     </div>
                 </div>
+                <!-- /Cart Header -->
+                <!-- Cart Checkout -->
                 <div id="order-summary">
                     <div>
                         <span>Items: </span>
@@ -129,12 +139,15 @@
                         <button class="btn btn-success col-md-12 text-uppercase checkout-btn">Checkout</button>
                     </div>
                 </div>
+                <!-- /Cart Checkout -->
                 <div class="list">
 
                 </div>
             </div>
         </div>
     </div>
+    <!-- /Main Content -->
+    <!-- Modals -->
     <div class="modal fade" id="product-details" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -171,24 +184,29 @@
             </div>
         </div>
     </div>
-    <!-- jQuery -->
-    <script src="./assets/js/jquery-3.4.1.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="./assets/js/bootstrap.min.js"></script>
-    <!-- FontAwesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"></script>
-    <!-- Base Classes -->
-    <script src="./data/Catalogue.js"></script>
-    <script src="./assets/js/partials/catalog_product.js"></script>
-    <script src="./assets/js/partials/cart_product.js"></script>
-    <script src="./assets/js/Product.js"></script>
-    <script src="./assets/js/Cart.js"></script>
-    <script src="./assets/js/Catalog.js"></script>
-    <script src="./assets/js/Pagination.js"></script>
-    <script src="./assets/js/Toast.js"></script>
-    <!-- Main Script -->
-    <script src="./assets/js/handleCart.js"></script>
-    <script src="./assets/js/handleCatalog.js"></script>
-    <script src="./assets/js/scripts.js"></script>
+    <!-- /Modals -->
+    <!-- Scripts -->
+    <container>
+        <!-- jQuery -->
+        <script src="./assets/js/jquery-3.4.1.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <!-- FontAwesome -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"></script>
+        <!-- Base Classes -->
+        <script src="./data/Catalogue.js"></script>
+        <script src="./assets/js/partials/catalog_product.js"></script>
+        <script src="./assets/js/partials/cart_product.js"></script>
+        <script src="./assets/js/Product.js"></script>
+        <script src="./assets/js/Cart.js"></script>
+        <script src="./assets/js/Catalog.js"></script>
+        <script src="./assets/js/Pagination.js"></script>
+        <script src="./assets/js/Toast.js"></script>
+        <!-- Main Script -->
+        <script src="./assets/js/handleCart.js"></script>
+        <script src="./assets/js/handleCatalog.js"></script>
+        <script src="./assets/js/scripts.js"></script>
+    </container>
+    <!-- /Scripts -->
 </body>
 </html>

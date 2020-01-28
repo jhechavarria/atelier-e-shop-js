@@ -24,6 +24,6 @@ var CART_PRODUCT_TEMPLATE = '<div class="container card product cart-item">'+
         '</div>'+
     '</div> -->'+
     '<div class="row justify-content-center">'+
-        '<p class="col-md-12 col-lg-6 text-uppercase bg-danger unavailable">Produit indisponible</p>'+
+        '<p class="col-12 text-uppercase text-white bg-danger unavailable"><strong><em>Unavailable Product</em></strong></p>'+
     '</div>'+
 '</div>';

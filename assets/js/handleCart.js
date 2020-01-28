@@ -40,7 +40,7 @@ jQuery(function () {
             }
 
             if (Catalog.hasProduct(product.id) === false) {
-                $('.unavailable', $product).fadeIn();
+                $('.unavailable', $product).css("display", "block");
             }
 
             $product.attr('product', product.id);

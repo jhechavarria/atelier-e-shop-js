@@ -69,3 +69,7 @@
 [data-target="#clear-cart"] {
   display: none;
 }
+
+.noProductsFound {
+  display: none;
+}
