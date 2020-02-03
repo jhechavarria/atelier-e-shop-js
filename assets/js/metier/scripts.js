@@ -15,7 +15,7 @@ String.prototype.hashCode = function() {
     return hash;
 };
 
-jQuery(() => {
+jQuery(function(){
     $.fn.isInViewport = function() {
         var elementTop = $(this).offset().top;
         var elementBottom = elementTop + $(this).outerHeight();

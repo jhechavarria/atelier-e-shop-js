@@ -1,4 +1,4 @@
-var Pagination = new (function(data={}) {
+var Pagination = new (function() {
     this.itemsPerPage = 10;
     this.length = 0;
     this.current = 1;
@@ -24,8 +24,8 @@ var Pagination = new (function(data={}) {
         }
     };
 
-    this.setItemsPerPage = function(itemsPerPage=10) {
-        this.itemsPerPage = parseInt(itemsPerPage);
+    this.setItemsPerPage = function(itemsPerPage) {
+        this.itemsPerPage = Number(itemsPerPage) !== NaN ? itemsPerPage : this.itemsPerPage;
         this.setLength();
     };
 

@@ -9,16 +9,22 @@ var Toast = new (function() {
         '<div class="toast-body"></div>'+
     '</div>';
 
-    this.add = function({ title, info, body, duration, color }) {
+    /**
+     * Ajoute un toast à la liste de ceux affichés
+     * 
+     * @param object Eléments de configuration du Toast
+     * @returns void
+     */
+    this.add = function(config) {
         $toast = $(toast);
-        $('.text-primary', $toast).text(title);
-        $('.text-muted', $toast).text(info);
-        $('.toast-body', $toast).text(body);
-        $toast.addClass('bg-' + color)
+        $('.text-primary', $toast).text(config.title);
+        $('.text-muted', $toast).text(config.info);
+        $('.toast-body', $toast).text(config.body);
+        $toast.addClass('bg-' + config.color)
         $toast.toast({
             animation: true,
             autohide: true,
-            delay: duration
+            delay: config.duration
         })
         .appendTo('.toasts')
         .toast('show');

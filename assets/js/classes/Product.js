@@ -1,4 +1,4 @@
-var Product = function(data={}) {
+var Product = function(data) {
     this.id = null;
     this.name = null;
     this.description = null;
@@ -13,6 +13,7 @@ var Product = function(data={}) {
      * @return void
      */
     this.hydrate = function(data) {
+        data = typeof data === 'object' ? data : {};
         for (var prop in data) {
             if (this[prop] !== undefined) {
                 this[prop] = data[prop];
@@ -41,7 +42,8 @@ var Product = function(data={}) {
      * @param int Quantite a incrementer
      * @return void
      */
-    this.increaseQty = function(qty=1) {
+    this.increaseQty = function(qty) {
+        qty = Number(qty) !== NaN ? qty : 1;
         this.setQty(this.qty + qty);
     }
 
@@ -51,7 +53,8 @@ var Product = function(data={}) {
      * @param int Quantite a decrementer
      * @return void
      */
-    this.decreaseQty = function(qty=1) {
+    this.decreaseQty = function(qty) {
+        qty = Number(qty) !== NaN ? qty : 1;
         this.setQty(this.qty - qty);
     }
 

@@ -18,7 +18,7 @@ var Cart = new (function() {
      * @return bool Retourne vrai si le chargement est effectue
      */
     this.load = function() {
-        var cart = localStorage.getItem("cart");
+        var cart = localStorage !== undefined && localStorage !== null ? localStorage.getItem("cart") : null;
 
         if (cart !== null) {
             let products = JSON.parse(cart);
@@ -43,7 +43,9 @@ var Cart = new (function() {
     this.save = function() {
         var cart = JSON.stringify(_products);
 
-        localStorage.setItem("cart", cart);
+        if (localStorage !== undefined && localStorage !== null) {
+            localStorage.setItem("cart", cart);
+        }
     }
 
     /**
@@ -115,18 +117,18 @@ var Cart = new (function() {
      * @param int Quantite a affecter au produit
      * @return bool Retourne vrai si le produit a eteajoute au panier
      */
-    this.addProduct = function(item, qty=null) {
+    this.addProduct = function(item, qty) {
         if (item instanceof Product === false) {
             return false;
         }
 
         item = item.clone();
-        if (qty !== null) {
+        if (qty !== undefined) {
             item.setQty(qty);
         }
 
         if (this.hasProduct(item)) {
-            if (qty === null || qty === NaN) {
+            if (qty === undefined || qty === NaN) {
                 console.error("La quantite doit etre un nombre et non: "+qty);
                 return false;
             }
@@ -189,11 +191,12 @@ var Cart = new (function() {
      * @param int L'index du produit a modifier
      * @return bool Retourne vrai si l'icrementation est effectuee
      */
-    this.increaseQty = function(id, incr=1) {
+    this.increaseQty = function(id, qty) {
+        qty = Number(qty) !== NaN ? qty : 1;
         if (!this.hasProduct(id)) {
             return false;
         }
-        _products[id].increaseQty(incr);
+        _products[id].increaseQty(qty);
         this.save();
         for (var idx in _callback.onQtyIncrease) {
             _callback.onQtyIncrease[idx](_products[id]);
@@ -210,11 +213,12 @@ var Cart = new (function() {
      * @param int L'index du produit a modifier
      * @return bool Retourne vrai si la decrementation est effectuee
      */
-    this.decreaseQty = function(id, decr=1) {
+    this.decreaseQty = function(id, qty) {
+        qty = Number(qty) !== NaN ? qty : 1;
         if (!this.hasProduct(id)) {
             return false;
         }
-        _products[id].decreaseQty(decr);
+        _products[id].decreaseQty(qty);
         this.save();
         for (var idx in _callback.onQtyDecrease) {
             _callback.onQtyDecrease[idx](_products[id]);
@@ -241,7 +245,12 @@ var Cart = new (function() {
             }
             total += product.price * product.qty;
         }
-        return Number.parseFloat(total).toFixed(2);
+        if (Number.parseFloat !== undefined) {
+            total = Number.parseFloat(total).toFixed(2);
+        } else {
+            total = total.toFixed(2);
+        }
+        return total;
     }
 
     /**

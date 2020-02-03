@@ -170,12 +170,12 @@ jQuery(function() {
             let regexp = new RegExp('#'+prop+'#', 'g');
             $product = $product.replace(regexp, val);
         }
-        $('.modal .modal-header h5').html(product.name);
-        $('.modal .modal-body').html($product);
-        $('.modal .modal-body .product')
+        $('.modal#product-details .modal-header h5').html(product.name);
+        $('.modal#product-details .modal-body').html($product);
+        $('.modal#product-details .modal-body .product')
             .removeClass('col-md-6 col-lg-4 mb-5')
             .addClass('col-12');
-        $('.modal .modal-body .product img').attr('src', $('.modal .modal-body .product img').attr('data-src'));
+        $('.modal#product-details .modal-body .product img').attr('src', $('.modal .modal-body .product img').attr('data-src'));
     });
 
     /**

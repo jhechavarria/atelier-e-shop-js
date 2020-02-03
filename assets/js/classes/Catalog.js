@@ -54,7 +54,7 @@ var Catalog = new (function() {
                 _products.push(product);
             }
         }
-        _backup = Object.assign([], _products);
+        _backup = this.getProducts();
         for (let idx in _callback.onLoad) {
             _callback.onLoad[idx](_products);
         }
@@ -101,7 +101,7 @@ var Catalog = new (function() {
         if (idx === false) {
             return null;
         }
-        return _products[idx];
+        return _products[idx].clone();
     }
 
     /**
@@ -110,8 +110,12 @@ var Catalog = new (function() {
      * @param VOID
      * @returns Product{} Liste des produits du catalogue
      */
-    this.getProducts = function(id) {
-        return _products;
+    this.getProducts = function() {
+        let tmp = [];
+        for (let i in _products) {
+            tmp[i] = _products[i].clone();
+        }
+        return tmp;
     }
 
     /**
@@ -124,8 +128,20 @@ var Catalog = new (function() {
         return _products.length;
     }
 
-    this.searchProducts = function(search='', callback) {
-        _products = Object.assign([], _backup);
+    /**
+     * Affiche les produits du catalogue en fonction d'un filtre
+     * 
+     * @param string Terme a chercher
+     * @param funciton Callback appelé à la fin de la recherche
+     * @returns void
+     */
+    this.searchProducts = function(search, callback) {
+        let tmp = [];
+        search = typeof search === 'string' ? search : '';
+        _products = [];
+        for (let i in _backup) {
+            _products[i] = _backup[i].clone();
+        }
         if (search == '') {
             if (typeof callback == "function") {
                 callback(false);
