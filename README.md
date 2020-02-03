@@ -4,7 +4,7 @@ e-shop.js est un projet de groupe réalisé au cours de divers ateliers de déve
 
 ### Kezako
 
-Le projet consiste à créer un prototype d'application de vente en ligne avec gestion de catalogue et de panier.
+Le projet consiste à créer un prototype d'application de vente en ligne avec gestion de catalogue et de panier. Compatible avec les différents navigateurs existants y compris Internet Explorer.
 
 ## Fonctionnalités
 
