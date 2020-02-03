@@ -186,7 +186,6 @@ jQuery(function() {
      */
     Catalog.on('load', function() {
         if (!Catalog.catalogExists()) {
-            console.log("OK");
             $(".loadOnScroll").fadeOut("slow");
             $('.noProductsFound').fadeIn('slow');
         }
