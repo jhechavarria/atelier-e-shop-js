@@ -1,10 +1,10 @@
 ## Atelier e-shop.js
 
-e-shop.js est un projet de groupe realise au cours de divers ateliers de developpement a l'ecole.
+e-shop.js est un projet de groupe réalisé au cours de divers ateliers de développement en formation. Il met l'accent sur la mise en situation professionnelle avec définition de rôles au sein de l'équipe et la répartition des tâches en fonction des dits rôles.
 
 ### Kezako
 
-Le projet consiste a creer une partie d'une application de vente en ligne: listing du catalogue de produits et gestion du panier.
+Le projet consiste à créer un prototype d'application de vente en ligne avec gestion de catalogue et de panier.
 
 ## Fonctionnalités
 
