@@ -55,6 +55,7 @@
 #order-summary {
   text-align: center;
   border    : 1px solid gray;
+  border-radius: 5px;
 }
 
 .cart-item {
