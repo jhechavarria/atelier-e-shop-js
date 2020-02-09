@@ -73,3 +73,8 @@
 .noProductsFound {
   display: none;
 }
+
+.modal .product.horizontal,
+.switch-list-style .vertical {
+  display: none;
+}

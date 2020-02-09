@@ -4,6 +4,21 @@ jQuery(function() {
     let searchTimer;
 
     /**
+     * Gere la disposition de la liste du catalogue
+     */
+    $('.switch-list-style').on('click', function() {
+        if ($('.catalog .list .product.vertical').hasClass('hidden')) {
+            $('.switch-list-style small.vertical').hide()
+            $('.switch-list-style small.horizontal').show()
+            setCatalogListDisplayMode('list')
+        } else {
+            $('.switch-list-style small.horizontal').hide()
+            $('.switch-list-style small.vertical').show()
+            setCatalogListDisplayMode('table')
+        }
+    });
+
+    /**
     * Gerer la quantite via les boutons
     */
    $('.list, .modal').on('click', '.product .decr, .product .incr', function(e) {
@@ -26,11 +41,11 @@ jQuery(function() {
    /**
      * Gerer la quantite via l'input
      */
-    $('.list .modal').on('keypress change blur', '.product input', function(e) {
+    $('.list, .modal').on('keyup change blur', '.product input', function(e) {
         let $input = $(this);
-        let qty = $input.val();
+        let qty = parseInt($input.val());
 
-        if (qty === NaN || qty < Catalog.MIN_QTY) {
+        if (isNaN(qty) || qty < Catalog.MIN_QTY) {
             qty = Catalog.MIN_QTY;
         } else if (qty > Catalog.MAX_QTY) {
             qty = Catalog.MAX_QTY;
@@ -47,7 +62,7 @@ jQuery(function() {
     $('.catalog .list, .modal').on('qtyChange', '.product', function(e, qty) {
         let $product = $(this);
 
-        if (qty == 0) {
+        if (qty <= 0) {
             $('.addProduct', $product).addClass('disabled');
         } else {
              $('.addProduct', $product).removeClass('disabled');
@@ -62,7 +77,7 @@ jQuery(function() {
         let id = $product.attr('product');
         let qty = parseInt($('input', $product).val());
 
-        if (qty === NaN) {
+        if (isNaN(qty)) {
             qty = Catalog.MIN_QTY;
         }
 
@@ -268,9 +283,19 @@ jQuery(function() {
             Pagination.current++;
             let $products = generateProducts();
             $($products).appendTo('.catalog .list');
+            setTimeout(function() {
+                if ($('.catalog .list .product.vertical:first').hasClass('hidden')) {
+                    setCatalogListDisplayMode('table')
+                } else {
+                    setCatalogListDisplayMode('list')
+                }
+            }, 1000);
         }
     }
 
+    /**
+     * Gere le chargement d'une portion de catalogue
+     */
     function initialProductsLoad() {
         Pagination.setLength();
         Pagination.loadedItems = 0;
@@ -300,6 +325,30 @@ jQuery(function() {
             '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
             '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
         return !!pattern.test(str);
+    }
+
+    /**
+     * Gere le mode d'affichage des produits du catalogue
+     * 
+     * @param, str Mode d'affichage: list | table
+     */
+    function setCatalogListDisplayMode(mode) {
+        mode = mode !== undefined ? mode : 'table'
+        if (mode === 'list') {
+            $('.catalog .list .product.vertical').each(function() {
+                $(this).removeClass('hidden')
+            });
+            $('.catalog .list .product.horizontal').each(function() {
+                $(this).addClass('hidden')
+            });
+        } else {
+            $('.catalog .list .product.vertical').each(function() {
+                $(this).addClass('hidden')
+            });
+            $('.catalog .list .product.horizontal').each(function() {
+                $(this).removeClass('hidden')
+            });
+        }
     }
 
     /**
