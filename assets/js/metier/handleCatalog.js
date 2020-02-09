@@ -105,8 +105,11 @@ jQuery(function() {
         searchTimer = setTimeout(function() {
             Catalog.searchProducts(search, function(found) {
                 initialProductsLoad();
-                if ($('.catalog .list .product').length <= Catalog.getProducts().length) {
+                if ($('#itemsPerPage option:selected').val() >= Catalog.getProducts().length) {
                     $(".loadOnScroll").fadeOut("slow");
+                    console.log("OK")
+                } else {
+                    console.log('KO')
                 }
                 if (found) {
                     $('.noProductsFound').fadeOut();

@@ -1,6 +1,6 @@
 var CART_PRODUCT_TEMPLATE = '<div class="container card product cart-item">'+
     '<div class="row justify-content-md-center align-items-center no-gutter">'+
-        '<div class="col-sm-11 col-md-11 col-lg-7">'+
+        '<div class="col-sm-11 col-md-11 col-lg-6">'+
             '<p class="title cart-item-title"></p>'+
             '<span class="cart-price"></span>'+
             '<a class="cart-delete remove" href="#">supprimer</a>'+
@@ -8,7 +8,7 @@ var CART_PRODUCT_TEMPLATE = '<div class="container card product cart-item">'+
         '<div class="col-sm-1 col-md-1 col-lg-1">'+
             '<span>x</span>'+
         '</div>'+
-        '<div class="input-group col-sm-12 col-md-12 col-lg-4">'+
+        '<div class="input-group col-sm-12 col-md-12 col-lg-5">'+
             '<div class="input-group-prepend">'+
                 '<button class="btn btn-outline-secondary btn-sm decr" type="button">-</button>'+
             '</div>'+
