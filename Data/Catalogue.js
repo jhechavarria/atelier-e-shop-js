@@ -1,123 +1,123 @@
 var catalogue = [
     {
-      "name": "aliqua mollit fugiat aute est",
+      "name": "MSI Gaming Computer",
       "description": "Sunt exercitation sit nostrud Lorem consectetur cupidatat. Excepteur commodo laborum magna incididunt officia esse. Ex eiusmod dolor voluptate ut ad labore labore non labore est fugiat occaecat. Nulla nostrud adipisicing elit dolore ea non enim duis aliqua aliquip officia eiusmod elit quis. Eu aute velit ex excepteur sint.\r\n",
       "image": "",
-      "price": 74.52
+      "price": 1200.0
     },
     {
-      "name": "pariatur laborum sunt anim labore",
+      "name": "Lenovo ThinkPad T650",
       "description": "Ad nulla aliquip id consequat. Mollit irure sunt ipsum tempor incididunt ea. Sint mollit incididunt esse eu eiusmod laborum mollit et cupidatat minim minim adipisicing. Elit aliquip voluptate nulla magna nostrud irure ea amet excepteur qui labore duis. Id eu excepteur consequat in consequat duis veniam. Labore nostrud tempor veniam velit Lorem culpa culpa duis aliquip esse.\r\n",
-      "image": "images/product.jpg",
-      "price": 39.7
+      "image": "/images/products/laptop3.jpg",
+      "price": 650.00
     },
     {
-      "name": "officia deserunt culpa occaecat laboris",
+      "name": "Acer DT-557629",
       "description": "Fugiat enim eiusmod consectetur nisi Lorem. Laboris do excepteur adipisicing pariatur esse proident nostrud excepteur nostrud anim sunt enim velit cillum. Nisi commodo laborum consectetur ad reprehenderit deserunt laboris ullamco. Do dolore voluptate ea nisi consequat. Mollit non sunt ad tempor eu commodo proident. In ipsum consequat tempor magna cupidatat duis.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 161.21
+      "image": "/images/products/laptop1.jpg",
+      "price": 999.99
     },
     {
-      "name": "elit aute cillum fugiat cillum",
+      "name": "Asus RG 3",
       "description": "Cupidatat ullamco commodo sit cillum. Veniam sit sit aliqua mollit nulla officia est anim est. Eu nulla minim do ad ex incididunt dolor dolore cillum ullamco laborum.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 153.98
+      "image": "/images/products/laptop2.jpg",
+      "price": 579.99
     },
     {
-      "name": "amet irure Lorem aliqua eu",
+      "name": "Dell XPS 13'",
       "description": "Exercitation in aliquip aliquip enim nostrud non velit esse sit deserunt amet dolor adipisicing enim. Ad adipisicing veniam veniam aliquip velit ullamco ad dolore culpa ad nisi. Sunt esse est aliquip anim aute labore proident pariatur.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 168.9
+      "image": "/images/products/laptop4.jpg",
+      "price": 1699.99
     },
     {
-      "name": "ad elit commodo consectetur duis",
+      "name": "Computer case 14' inch",
       "description": "Duis exercitation in velit ex excepteur quis enim culpa ut irure consequat. In laborum mollit nisi labore esse. Nulla proident voluptate non reprehenderit laborum occaecat anim aliqua quis laborum. Velit anim dolor exercitation occaecat adipisicing Lorem commodo dolore nulla. Ipsum non tempor cillum sint culpa sit esse. Minim aute in tempor exercitation consequat non eu occaecat et velit cupidatat incididunt.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 173.1
+      "image": "/images/products/sacoche.jpg",
+      "price": 65.99
     },
     {
-      "name": "ad labore ullamco commodo cillum",
+      "name": "MacBook Pro 15",
       "description": "Veniam esse aliqua esse enim aliqua excepteur est ea ullamco ullamco labore. Nulla eiusmod ipsum aute nostrud id. Non magna aliquip ex culpa aliqua proident quis ea incididunt.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 48.22
+      "image": "/images/products/laptop5.jpg",
+      "price": 2299.99
     },
     {
-      "name": "incididunt duis minim consectetur Lorem",
+      "name": "Acer Aspire V Nitro",
       "description": "Veniam non nisi Lorem incididunt et incididunt veniam ex est. Reprehenderit deserunt ad qui proident. Ex sint excepteur deserunt et ea. Ad aliqua veniam laborum occaecat sunt et anim velit cillum voluptate et et ea incididunt. Ullamco elit adipisicing cupidatat elit.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 34.71
+      "image": "/images/products/laptop6.jpg",
+      "price": 1200.00
     },
     {
-      "name": "qui occaecat veniam enim eu",
+      "name": "ASUS Zenbook 3",
       "description": "Consequat nostrud aliqua commodo non adipisicing eiusmod et sint mollit. Ad ex anim deserunt occaecat occaecat. Exercitation consectetur et adipisicing esse veniam ex nostrud. In dolor excepteur ex dolore enim irure eu Lorem enim nulla.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 3.07
+      "image": "/images/products/laptop7.jpg",
+      "price": 1000.99
     },
     {
-      "name": "cupidatat et adipisicing ex sunt",
+      "name": "MSI ROG Nvidia GTX1660",
       "description": "Dolore nulla labore proident aute anim ex. Enim aute exercitation dolore nisi et irure duis cillum aliqua veniam enim. In voluptate cillum consequat dolor ipsum mollit cillum ad aute fugiat culpa. Excepteur ex exercitation do proident incididunt amet consectetur mollit qui deserunt nisi.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 44.31
+      "image": "/images/products/laptop8.jpg",
+      "price": 1449.99
     },
     {
-      "name": "id ipsum aute eu mollit",
+      "name": "Asus R2 15'",
       "description": "Duis sit excepteur Lorem nisi incididunt aliqua occaecat magna cillum magna dolor officia nisi minim. Ipsum proident minim qui velit eu sit labore minim tempor. Fugiat dolor amet minim excepteur laborum laboris Lorem anim magna do. Consectetur sit est occaecat excepteur nisi duis ex fugiat. Eu nisi pariatur laboris duis et irure ea dolor cillum veniam. Culpa sit velit consectetur cupidatat velit mollit. Ea cupidatat magna sit do nostrud incididunt deserunt mollit ut.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 96.41
+      "image": "/images/products/laptop9.jpg",
+      "price": 899.00
     },
     {
-      "name": "dolor laboris aliqua enim aliquip",
+      "name": "Apple MacBook Stand",
       "description": "Laborum irure aliquip minim voluptate Lorem eiusmod amet ea. Irure esse magna dolore ad commodo nisi minim sint culpa pariatur laborum incididunt. Excepteur ex aute ea velit nulla duis adipisicing proident Lorem quis. Pariatur culpa anim sunt exercitation ut do pariatur veniam aliquip do deserunt nostrud dolore velit. Eu et minim amet culpa eu ut est velit sint occaecat cupidatat et mollit. Non reprehenderit veniam esse aute culpa tempor ut duis sint quis. In deserunt nostrud reprehenderit aute labore aliqua laborum irure eiusmod dolore mollit culpa et esse.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 6.76
+      "image": "/images/products/laptop10.jpg",
+      "price": 420.00
     },
     {
-      "name": "eu laborum labore qui do",
+      "name": "Dell XPS 15",
       "description": "Ad ipsum nostrud dolor aliquip adipisicing officia cupidatat ut. Elit ut in culpa est. Ex non velit veniam tempor et voluptate. Nisi amet Lorem aute culpa quis fugiat culpa reprehenderit ea. Ea sunt nostrud in veniam quis laborum in dolor dolor ullamco aliqua magna laborum ullamco.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 45.01
+      "image": "/images/products/laptop11.jpg",
+      "price": 1900.00
     },
     {
-      "name": "nostrud cillum non nulla irure",
+      "name": "Power supply 120W A/C",
       "description": "Sint tempor ullamco eu ex exercitation culpa amet labore mollit reprehenderit et eu elit consequat. Quis eu velit quis consectetur sunt reprehenderit. Aute eiusmod ad nulla voluptate consequat voluptate ipsum ad est esse tempor mollit ad eu.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 67.45
+      "image": "/images/products/chargeur.jpg",
+      "price": 120.45
     },
     {
-      "name": "commodo reprehenderit proident nisi qui",
+      "name": "Republic of gamers GTX-2080/LEDs",
       "description": "Laborum tempor qui pariatur est fugiat cillum. Tempor laboris eiusmod occaecat eu mollit reprehenderit mollit laboris. Culpa laborum qui commodo ut duis elit magna excepteur eu ipsum consectetur aliquip nisi. Id sint culpa laboris exercitation sunt. Aliquip aute labore velit dolor aliquip ullamco proident.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 87.2
+      "image": "/images/products/laptop12.jpg",
+      "price": 2099.99
     },
     {
-      "name": "fugiat magna deserunt ullamco exercitation",
+      "name": "Asus Zenbook 2",
       "description": "Voluptate nulla laboris ipsum officia ipsum aliqua ut eu. Adipisicing duis officia magna adipisicing qui proident sint laboris mollit ea est fugiat. Velit consectetur laborum pariatur fugiat occaecat enim nostrud est excepteur reprehenderit. Occaecat ipsum cillum dolor in est aliquip. Duis culpa exercitation ipsum qui consequat ut consectetur consectetur in nisi consectetur adipisicing. Nostrud voluptate ullamco adipisicing magna ea.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 109.72
+      "image": "/images/products/laptop13.jpg",
+      "price": 649.99
     },
     {
-      "name": "eiusmod non dolore culpa incididunt",
+      "name": "Asus Republic of Gamers",
       "description": "Non fugiat aliquip veniam sit. Aliqua incididunt reprehenderit reprehenderit id minim veniam laboris qui ipsum nostrud. Culpa reprehenderit quis duis aliquip ipsum duis. Laborum adipisicing velit esse do nulla qui veniam fugiat magna officia. Quis do reprehenderit veniam eu sint ea do veniam sunt. Proident aliquip quis labore est est proident quis commodo laboris consectetur adipisicing. Excepteur nostrud exercitation magna adipisicing proident laborum.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 45.15
+      "image": "/images/products/laptop14.jpg",
+      "price": 800.15
     },
     {
-      "name": "enim incididunt commodo laboris eu",
+      "name": "Acer Predator ZX-3500",
       "description": "Ea ex consequat quis voluptate labore occaecat irure consectetur. Sunt enim eiusmod ullamco est. Labore sunt dolor aliquip cupidatat laboris ullamco velit occaecat labore consectetur Lorem minim qui amet. Veniam reprehenderit ut velit aute velit exercitation aliquip magna. Cillum laboris id ipsum dolore mollit. Ex incididunt aliqua pariatur ipsum qui elit fugiat officia laborum ipsum laboris commodo dolore nulla. Ut amet et exercitation amet.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 136.49
+      "image": "/images/products/laptop15.jpg",
+      "price": 2399.49
     },
     {
-      "name": "voluptate adipisicing anim occaecat ad",
+      "name": "Gamer Headset",
       "description": "Pariatur sit sit adipisicing non sint aute laboris excepteur Lorem et commodo nisi duis. Nulla non pariatur elit enim do cillum cillum voluptate duis laborum sunt. Aute reprehenderit fugiat exercitation non velit aliquip est ullamco do ut labore ipsum. Occaecat laborum pariatur laborum ipsum sint fugiat sint commodo. Enim cillum eiusmod culpa cupidatat sit Lorem. Qui velit sint dolore proident occaecat culpa consequat laboris ad fugiat excepteur officia.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 11.06
+      "image": "/images/products/casque.jpg",
+      "price": 250.50
     },
     {
-      "name": "reprehenderit magna reprehenderit et irure",
+      "name": "Un joli paysage",
       "description": "Est deserunt irure nisi dolor amet nisi ea ea veniam proident esse dolor. Eu amet qui non irure. Cupidatat culpa eiusmod reprehenderit dolore duis. Minim consequat ullamco exercitation aute occaecat voluptate fugiat.\r\n",
-      "image": "https://placeimg.com/500/500/tech",
-      "price": 170.44
+      "image": "/images/products/landscape.jpg",
+      "price": 10
     },
     {
       "name": "deserunt amet aute magna occaecat",
