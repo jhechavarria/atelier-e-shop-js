@@ -246,7 +246,10 @@ jQuery(function() {
                 if (prop === "image" && (val === undefined || val === null || val === '')) {
                     val = "./assets/img/no_available_image.png";
                 } else if (prop === "image") {
-                    val = './data/' + val;
+                    if (!validURL(val))
+                        val = './data/' + val;
+                    else
+                        val = encodeURI(val + "?random=" + product.id)
                 }
                 let regexp = new RegExp('#'+prop+'#', 'g');
                 $product = $product.replace(regexp, val);
@@ -284,6 +287,19 @@ jQuery(function() {
         setTimeout(function() {
             displayImageFromVisibleProducts();
         }, 1000);
+    }
+
+    /**
+     * Verifie que la chaine de caractere corresponde a une url
+     */
+    function validURL(str) {
+        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+            '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        return !!pattern.test(str);
     }
 
     /**
